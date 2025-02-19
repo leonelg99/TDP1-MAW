@@ -1,0 +1,8 @@
+
+# ESP32-CAM IP and port
+ESP32_CAM_IP = "192.168.4.1"
+ESP32_CAM_PORT = 80
+
+
+
+
