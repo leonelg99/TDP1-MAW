@@ -1,12 +1,12 @@
 /**
  * @file messagesUtilities.h
- * @brief Librería para la gestión de buffers de comunicación en el ESP32-CAM.
+ * @brief Library for managing communication buffers on the ESP32-CAM.
  * 
- * Esta librería proporciona funciones para el manejo de buffers en la comunicación
- * UART y WiFi, utilizando semáforos de FreeRTOS para garantizar acceso seguro.
+ * This library provides functions for handling buffers in UART and WiFi communication,
+ * using FreeRTOS semaphores to ensure safe access.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
@@ -15,56 +15,56 @@
  
  #include <Arduino.h>
  #include <freertos/FreeRTOS.h>
- #include <freertos/semphr.h>  ///< Manejo de semáforos en FreeRTOS.
+ #include <freertos/semphr.h>  ///< Semaphore handling in FreeRTOS.
  
  /**
-  * @brief Inicializa los semáforos para la sincronización de buffers.
+  * @brief Initializes semaphores for buffer synchronization.
   */
  void initSemaphores(void);
  
  /**
-  * @brief Procesa un mensaje recibido, separando el tipo de comando y su contenido.
+  * @brief Processes a received message, separating the command type and content.
   * 
-  * @param message_aux Mensaje recibido en formato "tipo:comando".
-  * @param resp Puntero donde se almacenará el tipo del mensaje (cmd, cam, led, etc.).
-  * @param message Puntero donde se almacenará el contenido del mensaje.
+  * @param message_aux Received message in "type:command" format.
+  * @param resp Pointer where the message type (cmd, cam, led, etc.) will be stored.
+  * @param message Pointer where the content of the message will be stored.
   */
  void processMessage(String message_aux, String *resp, String *message);
  
  /**
-  * @brief Inicializa los buffers de almacenamiento para UART y WiFi.
+  * @brief Initializes storage buffers for UART and WiFi.
   */
  void initBuffers(void);
  
  /**
-  * @brief Guarda un mensaje recibido por WiFi en el buffer UART para enviarlo a la EDU-CIAA.
+  * @brief Saves a received WiFi message in the UART buffer to send it to the EDU-CIAA.
   * 
-  * @param msg Mensaje a almacenar.
-  * @return `true` si hubo error al guardar, `false` si se guardó correctamente.
+  * @param msg Message to store.
+  * @return `true` if there was an error saving, `false` if saved successfully.
   */
  bool saveInBufferUART(String msg);
  
  /**
-  * @brief Guarda un mensaje recibido por UART en el buffer WiFi para enviarlo posteriormente.
+  * @brief Saves a received UART message in the WiFi buffer to be sent later.
   * 
-  * @param msg Mensaje a almacenar.
-  * @return `true` si hubo error al guardar, `false` si se guardó correctamente.
+  * @param msg Message to store.
+  * @return `true` if there was an error saving, `false` if saved successfully.
   */
  bool saveInBufferWIFI(String msg);
  
  /**
-  * @brief Obtiene un comando almacenado en el buffer UART.
+  * @brief Retrieves a command stored in the UART buffer.
   * 
-  * @param cmd Puntero donde se almacenará el comando recuperado.
-  * @return `true` si se obtuvo un comando, `false` si no hay comandos disponibles.
+  * @param cmd Pointer where the retrieved command will be stored.
+  * @return `true` if a command was retrieved, `false` if no commands are available.
   */
  bool getCommand(String *cmd);
  
  /**
-  * @brief Obtiene un mensaje almacenado en el buffer WiFi.
+  * @brief Retrieves a message stored in the WiFi buffer.
   * 
-  * @param msg Puntero donde se almacenará el mensaje recuperado.
-  * @return `true` si se obtuvo un mensaje, `false` si no hay mensajes disponibles.
+  * @param msg Pointer where the retrieved message will be stored.
+  * @return `true` if a message was retrieved, `false` if no messages are available.
   */
  bool getMsg(String *msg);
  

@@ -1,51 +1,51 @@
 /**
  * @file messagesUtilities.c
- * @brief Implementación de la gestión de buffers de comunicación en el ESP32-CAM.
+ * @brief Implementation of communication buffer management on the ESP32-CAM.
  * 
- * Se implementan funciones para almacenar y recuperar mensajes en los buffers de WiFi y UART,
- * con acceso controlado mediante semáforos de FreeRTOS.
+ * Functions for storing and retrieving messages in the WiFi and UART buffers are implemented,
+ * with controlled access through FreeRTOS semaphores.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
  #include "messagesUtilities.h"
 
- #define MAX 15 ///< Capacidad máxima de los buffers WiFi y UART.
+ #define MAX 15 ///< Maximum capacity of the WiFi and UART buffers.
  
- // Buffers para la comunicación WiFi y UART
+ // Buffers for WiFi and UART communication
  String bufferWIFI[MAX];
  String bufferUART[MAX];
  
- // Índices y flags para WiFi
+ // Indices and flags for WiFi
  int indexWIFI_rx = 0;
  int indexWIFI_tx = 0;
  int wifiFlag = 0;
  
- // Índices y flags para UART
+ // Indices and flags for UART
  int indexUART_rx = 0;
  int indexUART_tx = 0;
  int uartFlag = 0;
  
- // Semáforos para la sincronización de acceso a los buffers
+ // Semaphores for synchronizing access to buffers
  SemaphoreHandle_t semUART, semWIFI;
  
- // Prototipos de funciones internas
+ // Internal function prototypes
  static void updateBufferWIFI(void);
  static void updateBufferUART(void);
  
  /**
-  * @brief Crea un semáforo binario en FreeRTOS.
+  * @brief Creates a binary semaphore in FreeRTOS.
   * 
-  * @return Handle del semáforo creado.
+  * @return Handle of the created semaphore.
   */
  SemaphoreHandle_t createSemaphore() {
      return xSemaphoreCreateBinary();
  }
  
  /**
-  * @brief Inicializa los semáforos para el acceso a los buffers de comunicación.
+  * @brief Initializes semaphores for access to communication buffers.
   */
  void initSemaphores() {
      semUART = createSemaphore();
@@ -59,20 +59,20 @@
  }
  
  /**
-  * @brief Procesa un mensaje recibido, separando el tipo de comando y su contenido.
+  * @brief Processes a received message, separating the command type and content.
   * 
-  * @param message_aux Mensaje recibido en formato "tipo:comando".
-  * @param resp Puntero donde se almacenará el tipo del mensaje (cmd, cam, led, etc.).
-  * @param message Puntero donde se almacenará el contenido del mensaje.
+  * @param message_aux Received message in "type:command" format.
+  * @param resp Pointer where the message type (cmd, cam, led, etc.) will be stored.
+  * @param message Pointer where the content of the message will be stored.
   */
  void processMessage(String message_aux, String *resp, String *message) {
-     int ind1 = message_aux.indexOf(':');  // Encuentra la posición del primer ":"
-     *resp = message_aux.substring(0, ind1);  // Extrae el tipo de mensaje
-     *message = message_aux.substring(ind1 + 1);  // Extrae el contenido del mensaje
+     int ind1 = message_aux.indexOf(':');  // Finds the position of the first ":"
+     *resp = message_aux.substring(0, ind1);  // Extracts the message type
+     *message = message_aux.substring(ind1 + 1);  // Extracts the message content
  }
  
  /**
-  * @brief Inicializa los buffers WiFi y UART, limpiando su contenido.
+  * @brief Initializes WiFi and UART buffers, clearing their contents.
   */
  void initBuffers() {
      for (uint8_t i = 0; i < MAX; i++) {
@@ -81,16 +81,16 @@
      }
  }
  
- /* ========== MANEJO DEL BUFFER UART ========== */
+ /* ========== UART BUFFER MANAGEMENT ========== */
  
  /**
-  * @brief Recupera un comando almacenado en el buffer UART.
+  * @brief Retrieves a command stored in the UART buffer.
   * 
-  * @param cmd Puntero donde se almacenará el comando recuperado.
-  * @return `true` si se obtuvo un comando, `false` si no hay comandos disponibles.
+  * @param cmd Pointer where the retrieved command will be stored.
+  * @return `true` if a command was retrieved, `false` if no commands are available.
   */
  bool getCommand(String *cmd) {
-     bool exito = false;
+     bool success = false;
      String msg;
  
      if (xSemaphoreTake(semUART, (TickType_t)5) == pdTRUE) {
@@ -100,16 +100,16 @@
              bufferUART[indexUART_tx] = "";
              indexUART_tx++;
              updateBufferUART();
-             exito = true;
+             success = true;
              *cmd = msg;
          }
          xSemaphoreGive(semUART);
      }
-     return exito;
+     return success;
  }
  
  /**
-  * @brief Actualiza los índices del buffer UART para evitar desbordamientos.
+  * @brief Updates UART buffer indices to prevent overflow.
   */
  static void updateBufferUART() {
      if (indexUART_rx >= MAX) indexUART_rx = 0;
@@ -117,10 +117,10 @@
  }
  
  /**
-  * @brief Guarda un mensaje en el buffer UART para ser enviado posteriormente.
+  * @brief Saves a message in the UART buffer to be sent later.
   * 
-  * @param msg Mensaje a almacenar.
-  * @return `true` si hubo error al guardar, `false` si se guardó correctamente.
+  * @param msg Message to store.
+  * @return `true` if there was an error saving, `false` if saved successfully.
   */
  bool saveInBufferUART(String msg) {
      bool error = true;
@@ -137,16 +137,16 @@
      return error;
  }
  
- /* ========== MANEJO DEL BUFFER WIFI ========== */
+ /* ========== WIFI BUFFER MANAGEMENT ========== */
  
  /**
-  * @brief Recupera un mensaje almacenado en el buffer WiFi.
+  * @brief Retrieves a message stored in the WiFi buffer.
   * 
-  * @param msg Puntero donde se almacenará el mensaje recuperado.
-  * @return `true` si se obtuvo un mensaje, `false` si no hay mensajes disponibles.
+  * @param msg Pointer where the retrieved message will be stored.
+  * @return `true` if a message was retrieved, `false` if no messages are available.
   */
  bool getMsg(String *msg) {
-     bool exito = false;
+     bool success = false;
      String str;
  
      if (xSemaphoreTake(semWIFI, (TickType_t)5) == pdTRUE) {
@@ -155,16 +155,16 @@
              str = bufferWIFI[indexWIFI_tx];
              indexWIFI_tx++;
              updateBufferWIFI();
-             exito = true;
+             success = true;
              *msg = str;
          }
          xSemaphoreGive(semWIFI);
      }
-     return exito;
+     return success;
  }
  
  /**
-  * @brief Actualiza los índices del buffer WiFi para evitar desbordamientos.
+  * @brief Updates WiFi buffer indices to prevent overflow.
   */
  static void updateBufferWIFI() {
      if (indexWIFI_rx >= MAX) indexWIFI_rx = 0;
@@ -172,10 +172,10 @@
  }
  
  /**
-  * @brief Guarda un mensaje en el buffer WiFi para ser enviado posteriormente.
+  * @brief Saves a message in the WiFi buffer to be sent later.
   * 
-  * @param msg Mensaje a almacenar.
-  * @return `true` si hubo error al guardar, `false` si se guardó correctamente.
+  * @param msg Message to store.
+  * @return `true` if there was an error saving, `false` if saved successfully.
   */
  bool saveInBufferWIFI(String msg) {
      bool error = true;

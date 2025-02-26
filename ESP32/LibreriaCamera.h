@@ -1,13 +1,13 @@
 /**
  * @file LibreriaCamera.h
- * @brief Librería para la configuración y gestión de la cámara en el ESP32-CAM.
+ * @brief Library for configuring and managing the camera on the ESP32-CAM.
  * 
- * Esta librería permite inicializar la cámara, transmitir video por HTTP, cambiar 
- * la resolución y controlar el LED flash incorporado. También gestiona la comunicación 
- * con otros módulos a través de WiFi y UART.
+ * This library allows initializing the camera, streaming video via HTTP, changing
+ * the resolution, and controlling the built-in flash LED. It also manages communication
+ * with other modules through WiFi and UART.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
@@ -16,38 +16,39 @@
  
  #include <Arduino.h>
  #include "esp_camera.h"
- #define CAMERA_MODEL_AI_THINKER ///< Definición del modelo de cámara utilizado.
- #include "camera_pins.h"        ///< Archivo que define los pines de la cámara.
+ #define CAMERA_MODEL_AI_THINKER ///< Definition of the camera model used.
+ #include "camera_pins.h"        ///< File that defines the camera pins.
  #include <WiFi.h>
- #include "messagesUtilities.h"  ///< Utilidades para la gestión de mensajes.
+ #include "messagesUtilities.h"  ///< Utilities for message management.
  
  /**
-  * @brief Configura e inicializa la cámara del ESP32-CAM.
+  * @brief Configures and initializes the ESP32-CAM camera.
   * 
-  * Esta función define los pines, la calidad de imagen y otros parámetros
-  * necesarios para el funcionamiento de la cámara.
+  * This function defines the pins, image quality, and other parameters necessary
+  * for the camera operation.
   */
  void cameraSetup(void);
  
  /**
-  * @brief Inicia la transmisión de video en tiempo real mediante HTTP.
+  * @brief Starts real-time video streaming via HTTP.
   * 
-  * Configura un servidor web en el puerto 8020 y gestiona la captura de imágenes
-  * en formato JPEG, transmitiéndolas de manera continua.
+  * Configures a web server on port 8020 and manages the capture of JPEG images,
+  * continuously streaming them.
   */
  void cameraExecute(void);
  
  /**
-  * @brief Cambia la resolución de la cámara durante la ejecución.
+  * @brief Changes the camera resolution during runtime.
   * 
-  * Alterna entre resoluciones predefinidas (SVGA y UXGA). En caso de error, reinicia la cámara.
+  * Switches between predefined resolutions (SVGA and UXGA). In case of error,
+  * the camera is restarted.
   */
  void changeResolution(void);
  
  /**
-  * @brief Activa o desactiva el LED del ESP32-CAM.
+  * @brief Turns the ESP32-CAM's LED on or off.
   * 
-  * Esta función enciende o apaga el LED flash del ESP32-CAM.
+  * This function turns the flash LED of the ESP32-CAM on or off.
   */
  void led(void);
  

@@ -1,52 +1,52 @@
 /**
  * @file LibreriaUART.c
- * @brief Implementación de la comunicación UART entre el ESP32-CAM y la EDU-CIAA.
+ * @brief Implementation of UART communication between the ESP32-CAM and the EDU-CIAA.
  * 
- * Esta implementación permite la inicialización de la UART y la comunicación en 
- * un bucle continuo para recibir y enviar datos entre el ESP32 y la EDU-CIAA.
+ * This implementation allows for the initialization of UART and continuous 
+ * communication to receive and send data between the ESP32 and the EDU-CIAA.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
  #include "LibreriaUART.h"
 
- String msg; ///< Variable para almacenar mensajes recibidos por UART.
+ String msg; ///< Variable to store messages received via UART.
  
- /**
-  * @brief Configura la UART con una velocidad de 115200 baudios.
-  * 
-  * Esta función inicializa la comunicación UART del ESP32-CAM, 
-  * permitiendo la transmisión y recepción de datos en serie.
-  */
- void uartSetup() {
-     Serial.begin(115200);
- }
+  /**
+   * @brief Configures UART at a speed of 115200 baud.
+   * 
+   * This function initializes UART communication on the ESP32-CAM, 
+   * allowing serial data transmission and reception.
+   */
+  void uartSetup() {
+      Serial.begin(115200);
+  }
  
- /**
-  * @brief Gestiona la comunicación UART en un bucle continuo.
-  * 
-  * - Si hay datos disponibles en la UART, los lee y los almacena en el buffer WiFi.
-  * - Si hay un mensaje listo para ser enviado, lo transmite a través de la UART.
-  * - Introduce un pequeño delay para evitar sobrecarga de la CPU.
-  */
- void uartStart() {
-     while (1) {
-         // Si hay datos en la UART, los lee y los almacena en el buffer WiFi.
-         if (Serial.available()) {
-             msg = Serial.readStringUntil('\n');
-             saveInBufferWIFI(msg);
-         }
-         
-         // Si hay un mensaje en el buffer para la EDU-CIAA, lo envía.
-         if (getCommand(&msg)) {
-             Serial.println(msg);
-         }
-         
-         // Limpia la variable del mensaje y espera para la siguiente iteración.
-         msg = "";
-         vTaskDelay(10);
-     }
- }
+  /**
+   * @brief Manages UART communication in a continuous loop.
+   * 
+   * - If data is available on UART, it reads and stores it in the WiFi buffer.
+   * - If a message is ready to be sent, it transmits it via UART.
+   * - Introduces a small delay to avoid overloading the CPU.
+   */
+  void uartStart() {
+      while (1) {
+          // If data is available on UART, reads it and stores it in the WiFi buffer.
+          if (Serial.available()) {
+              msg = Serial.readStringUntil('\n');
+              saveInBufferWIFI(msg);
+          }
+ 
+          // If there is a message in the buffer for the EDU-CIAA, it sends it.
+          if (getCommand(&msg)) {
+              Serial.println(msg);
+          }
+ 
+          // Clears the message variable and waits for the next iteration.
+          msg = "";
+          vTaskDelay(10);
+      }
+  }
  

@@ -1,42 +1,42 @@
 /**
  * @file LibreriaFreeRTOS.c
- * @brief Implementación de las tareas en FreeRTOS para el ESP32-CAM.
+ * @brief Implementation of tasks in FreeRTOS for the ESP32-CAM.
  * 
- * Se definen tareas para la gestión del servidor WiFi, la comunicación UART y,
- * eventualmente, la transmisión de video. Cada tarea se ejecuta en un núcleo específico
- * del ESP32 mediante `xTaskCreatePinnedToCore()`.
+ * Tasks are defined for managing the WiFi server, UART communication, and
+ * eventually video transmission. Each task is executed on a specific core
+ * of the ESP32 using `xTaskCreatePinnedToCore()`.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
  #include "LibreriaFreeRTOS.h"
 
- // Declaraciones de funciones privadas
- static void conexionTask(void *); ///< Tarea para manejar el servidor WiFi.
- static void uartTask(void *);     ///< Tarea para manejar la comunicación UART.
- // static void videoTask(void *);  ///< (Pendiente) Tarea para manejar la transmisión de video.
+ // Private function declarations
+ static void conexionTask(void *); ///< Task to handle the WiFi server.
+ static void uartTask(void *);     ///< Task to handle UART communication.
+ // static void videoTask(void *);  ///< (Pending) Task to handle video transmission.
  
  /**
-  * @brief Crea y asigna las tareas en FreeRTOS.
+  * @brief Creates and assigns tasks in FreeRTOS.
   * 
-  * Se asignan las tareas de servidor y comunicación UART al núcleo 0 del ESP32.
+  * The server and UART communication tasks are assigned to core 0 of the ESP32.
   */
  void createTasks() {
  
-     // Tarea para la gestión del servidor WiFi (Core 0)
+     // Task for managing the WiFi server (Core 0)
      xTaskCreatePinnedToCore(
-         conexionTask,      ///< Función de la tarea.
-         "Server",         ///< Nombre de la tarea.
-         STACK_SIZE_SERVER, ///< Tamaño de pila.
-         NULL,             ///< Parámetros (no usados).
-         1,                ///< Prioridad de la tarea.
-         NULL,             ///< Manejador de la tarea (no usado).
-         0                 ///< Núcleo donde se ejecuta (Core 0).
+         conexionTask,      ///< Task function.
+         "Server",          ///< Task name.
+         STACK_SIZE_SERVER, ///< Stack size.
+         NULL,              ///< Parameters (not used).
+         1,                 ///< Task priority.
+         NULL,              ///< Task handler (not used).
+         0                  ///< Core to run on (Core 0).
      );
  
-     // Tarea para la comunicación UART con la EDU-CIAA (Core 0)
+     // Task for UART communication with the EDU-CIAA (Core 0)
      xTaskCreatePinnedToCore(
          uartTask,
          "UART",
@@ -47,26 +47,26 @@
          0
      );
      
-     // (Opcional) Se podría agregar la tarea para la transmisión de video en Core 1 si es necesario.
+     // (Optional) A task for video transmission could be added on Core 1 if needed.
  }
  
  /**
-  * @brief Tarea que gestiona el servidor WiFi.
+  * @brief Task that manages the WiFi server.
   * 
-  * Llama a `serverExecute()` para inicializar y manejar la comunicación con la PC.
+  * Calls `serverExecute()` to initialize and manage communication with the PC.
   * 
-  * @param parameter No utilizado.
+  * @param parameter Not used.
   */
  static void conexionTask(void *parameter) {
      serverExecute();
  }
  
  /**
-  * @brief Tarea que maneja la comunicación UART con la EDU-CIAA.
+  * @brief Task that handles UART communication with the EDU-CIAA.
   * 
-  * Llama a `uartStart()` para recibir y enviar datos en serie.
+  * Calls `uartStart()` to receive and send data serially.
   * 
-  * @param parameter No utilizado.
+  * @param parameter Not used.
   */
  static void uartTask(void *parameter) {
      uartStart();

@@ -1,12 +1,11 @@
 /**
  * @file camera_pins.h
- * @brief Definición de los pines para la cámara AI-Thinker en el ESP32-CAM.
+ * @brief Definition of the pins for the AI-Thinker camera on the ESP32-CAM.
  * 
- * Este archivo define los pines utilizados por la cámara AI-Thinker, incluyendo los
- * pines de datos, sincronización, reloj, alimentación y control del LED flash.
+ * This file defines the pins used by the AI-Thinker camera, including data pins, synchronization, clock, power, and LED flash control pins.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
@@ -15,22 +14,22 @@
  
  #if defined(CAMERA_MODEL_AI_THINKER)
  
- /** @brief Pin de encendido/apagado de la cámara (no siempre utilizado). */
+ /** @brief Camera power on/off pin (not always used). */
  #define PWDN_GPIO_NUM     32
  
- /** @brief Pin de reinicio de la cámara (no conectado en AI-Thinker). */
+ /** @brief Camera reset pin (not connected on AI-Thinker). */
  #define RESET_GPIO_NUM    -1
  
- /** @brief Pin de entrada del reloj de la cámara. */
+ /** @brief Camera clock input pin. */
  #define XCLK_GPIO_NUM      0
  
- /** @brief Pin de datos SDA del bus I2C para control de la cámara. */
+ /** @brief SDA data pin of the I2C bus for camera control. */
  #define SIOD_GPIO_NUM     26
  
- /** @brief Pin de reloj SCL del bus I2C para control de la cámara. */
+ /** @brief SCL clock pin of the I2C bus for camera control. */
  #define SIOC_GPIO_NUM     27
  
- /** @brief Pines de datos de la cámara (Y2-Y9). */
+ /** @brief Camera data pins (Y2-Y9). */
  #define Y9_GPIO_NUM       35
  #define Y8_GPIO_NUM       34
  #define Y7_GPIO_NUM       39
@@ -40,12 +39,12 @@
  #define Y3_GPIO_NUM       18
  #define Y2_GPIO_NUM        5
  
- /** @brief Pines de sincronización y reloj de la cámara. */
- #define VSYNC_GPIO_NUM    25  ///< Pin de sincronización vertical.
- #define HREF_GPIO_NUM     23  ///< Pin de referencia de línea.
- #define PCLK_GPIO_NUM     22  ///< Pin de reloj de píxeles.
+ /** @brief Camera synchronization and clock pins. */
+ #define VSYNC_GPIO_NUM    25  ///< Vertical synchronization pin.
+ #define HREF_GPIO_NUM     23  ///< Line reference pin.
+ #define PCLK_GPIO_NUM     22  ///< Pixel clock pin.
  
- /** @brief Pin del LED de la cámara (Flash o indicador). */
+ /** @brief Camera LED pin (Flash or indicator). */
  #define LED_GPIO_NUM       4  
  
  #else

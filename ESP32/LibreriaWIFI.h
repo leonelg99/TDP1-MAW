@@ -1,55 +1,52 @@
 /**
- * @file LibreriaWIFI.h
- * @brief Librería para la configuración y gestión de la red WiFi en el ESP32-CAM.
+ * @file LibreriaUART.c
+ * @brief Implementation of UART communication between the ESP32-CAM and the EDU-CIAA.
  * 
- * Esta librería permite configurar el ESP32 como un Access Point (AP), gestionar 
- * la conexión con clientes, procesar comandos recibidos y manejar la comunicación
- * entre el ESP32 y la EDU-CIAA.
+ * This implementation allows for the initialization of UART and continuous 
+ * communication to receive and send data between the ESP32 and the EDU-CIAA.
  * 
- * @author [Tu Nombre]
- * @date [Fecha]
+ * @author [Your Name]
+ * @date [Date]
  * @version 1.0
  */
 
- #ifndef LIBRERIA_WIFI_H
- #define LIBRERIA_WIFI_H
+ #include "LibreriaUART.h"
+
+ String msg; ///< Variable to store messages received via UART.
  
- #include <Arduino.h>
- #include <WiFi.h>
- #include <WiFiAP.h>
- #include <WiFiClient.h>
- #include "messagesUtilities.h"  ///< Manejo de buffers de mensajes.
- #include "LibreriaCamera.h"     ///< Control de la cámara ESP32-CAM.
+  /**
+   * @brief Configures UART at a speed of 115200 baud.
+   * 
+   * This function initializes UART communication on the ESP32-CAM, 
+   * allowing serial data transmission and reception.
+   */
+  void uartSetup() {
+      Serial.begin(115200);
+  }
  
- /**
-  * @brief Inicializa el ESP32 como un Access Point (AP).
-  * 
-  * Configura el ESP32 en modo AP con una IP estática y contraseña definida.
-  */
- void startWiFi(void);
+  /**
+   * @brief Manages UART communication in a continuous loop.
+   * 
+   * - If data is available on UART, it reads and stores it in the WiFi buffer.
+   * - If a message is ready to be sent, it transmits it via UART.
+   * - Introduces a small delay to avoid overloading the CPU.
+   */
+  void uartStart() {
+      while (1) {
+          // If data is available on UART, reads it and stores it in the WiFi buffer.
+          if (Serial.available()) {
+              msg = Serial.readStringUntil('\n');
+              saveInBufferWIFI(msg);
+          }
  
- /**
-  * @brief Inicia el servidor WiFi para aceptar conexiones de clientes.
-  * 
-  * Configura el ESP32 para escuchar conexiones en el puerto 80.
-  */
- void serverSetup(void);
+          // If there is a message in the buffer for the EDU-CIAA, it sends it.
+          if (getCommand(&msg)) {
+              Serial.println(msg);
+          }
  
- /**
-  * @brief Maneja la comunicación con los clientes conectados al servidor.
-  * 
-  * - Recibe mensajes de los clientes y determina el destinatario.
-  * - Enruta los comandos a la EDU-CIAA o ejecuta acciones en el ESP32.
-  * - Devuelve respuestas a los clientes.
-  */
- void serverExecute(void);
- 
- /**
-  * @brief Verifica si hay un cliente conectado al servidor y lo retorna.
-  * 
-  * @return WiFiClient Cliente conectado, o vacío si no hay ninguno.
-  */
- WiFiClient getClient(void);
- 
- #endif // LIBRERIA_WIFI_H
+          // Clears the message variable and waits for the next iteration.
+          msg = "";
+          vTaskDelay(10);
+      }
+  }
  
