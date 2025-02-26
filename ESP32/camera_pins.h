@@ -4,8 +4,8 @@
  * 
  * This file defines the pins used by the AI-Thinker camera, including data pins, synchronization, clock, power, and LED flash control pins.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com)
+ * @date 15-10-2023
  * @version 1.0
  */
 

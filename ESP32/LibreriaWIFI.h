@@ -5,8 +5,8 @@
  * This implementation allows for the initialization of UART and continuous 
  * communication to receive and send data between the ESP32 and the EDU-CIAA.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) & Ossola Florencia (flor.ossola13@gmail.com)
+ * @date 14-02-2024
  * @version 1.0
  */
 

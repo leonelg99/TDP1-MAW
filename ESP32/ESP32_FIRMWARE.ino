@@ -5,8 +5,8 @@
  * This code initializes and manages WiFi communication, the camera, and UART
  * using FreeRTOS for concurrent task execution.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) & Ossola Florencia (flor.ossola13@gmail.com)
+ * @date 10-02-2024
  * @version 1.0
  */
 

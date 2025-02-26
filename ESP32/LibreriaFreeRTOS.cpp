@@ -6,8 +6,8 @@
  * eventually video transmission. Each task is executed on a specific core
  * of the ESP32 using `xTaskCreatePinnedToCore()`.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) & Ossola Florencia (flor.ossola13@gmail.com)
+ * @date 14-02-2024
  * @version 1.0
  */
 

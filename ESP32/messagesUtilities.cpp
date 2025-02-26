@@ -5,8 +5,8 @@
  * Functions for storing and retrieving messages in the WiFi and UART buffers are implemented,
  * with controlled access through FreeRTOS semaphores.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) & Ossola Florencia (flor.ossola13@gmail.com)
+ * @date 14-02-2024
  * @version 1.0
  */
 

@@ -5,8 +5,8 @@
  * This library allows the initialization of UART and manages serial 
  * communication, ensuring message exchange between the ESP32-CAM and the EDU-CIAA.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) 
+ * @date 15-10-2023
  * @version 1.0
  */
 

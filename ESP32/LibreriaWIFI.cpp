@@ -5,8 +5,8 @@
  * This implementation configures the ESP32 as an Access Point (AP), starts the server, 
  * manages communication with clients, and executes received commands.
  * 
- * @author [Your Name]
- * @date [Date]
+ * @author Guerrico Leonel (lguerrico99@gmail.com) & Ossola Florencia (flor.ossola13@gmail.com)
+ * @date 14-02-2024
  * @version 1.0
  */
 
