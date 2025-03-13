@@ -20,9 +20,11 @@ Este vehículo se inspira principalmente en los robots para desactivación de ar
   <summary><i>:memo: Características del proyecto</i></summary>
   <ol>
     <li><b>Transmision de Video<b></li>
-    <p>Se puede decir que es la base del proyecto. Se realiza mediante el **ESP32-CAM** (version del ESP32 con una camara integrada) el cual establece un transmision de video mediante HTTP, la cual es captada por el CLI. De esta manera se puede controlar el vehiculo a distancia.</p>
+    <p>Se puede decir que es la base del proyecto. Se realiza mediante el ESP32-CAM (version del ESP32 con una camara integrada) el cual establece un transmision de video mediante HTTP, la cual es captada por el CLI. De esta manera se puede controlar el vehiculo a distancia.</p>
+    <li>Modulo de Baterias</li>
+    <p>El vehiculo cuanta con una serie de baterias para alimentar todos los componenetes, incluyendo una bateria dedicada a los motores, y otra a la logica.</p>
     <li>Access Point</li>
-    <p>El ESP32 actúa como punto de acceso (AP) para la conexión. De este modo la pc donde se ejectute el cliente (CLI) debe conectarse al la red del ESP32.</p>
+    <p>El ESP32-CAM actúa como punto de acceso (AP) para la conexión. De este modo la pc donde se ejectute el cliente (CLI) debe conectarse al la red del ESP32.</p>
     <li>Desarrollo Modular</li>
     <p>El programa está diseñado de manera modular, con componentes separados por funcionalidad, facilitando el mantenimiento y la extensión del proyecto.</p>
     <li>Replicabilidad</li>
@@ -35,30 +37,22 @@ Este vehículo se inspira principalmente en los robots para desactivación de ar
 <details> 
   <summary><i>:satellite: Tecnologías utilizadas</i></summary>
   <ol> 
-    <li>Aplicación web</li>
+    <li>Cliente (CLI)</li>
     <ul> 
-      <li>Angular 18: framework frontend utilizado para la construcción de la interfaz de usuario, con un enfoque en componentes independientes y organización modular.</li>
-      <li>Angular Material: utilizado para el diseño de la interfaz, proporcionando componentes estilizados y responsivos para una experiencia de usuario consistente.</li>
-      <li>HTML, CSS y TypeScript: fundamentales para la estructura, estilo y lógica de la aplicación web, aprovechando las capacidades tipadas de TypeScript para un desarrollo más robusto.</li>
+      <li>Python</li>
+      <li>Tkinter: libreria para la implementacion de la interfaz grafica</li>
+      <li>PIL: para el procesamiento y manejo de imagenes</li>
+      <li>Threading: para la ejecucion de tareas concurrentes</li>
     </ul> 
-    <li>Backend</li>
+    <li>Firmware(ESP32-CAM)</li>
     <ul>
-      <li>Java (Spring Boot): framework utilizado para construir el servidor backend, gestionando las solicitudes HTTP y la lógica de negocio.</li>
-      <li>Maven: herramienta de gestión de dependencias y construcción del proyecto backend, asegurando un ciclo de desarrollo eficiente.</li>
-      <li>MongoDB: base de datos NoSQL utilizada para almacenar la información persistente de la aplicación, con un enfoque en flexibilidad y escalabilidad.</li>
+      <li>Arduino: libreria e IDE para programar el ESP32-CAM</li>
+      <li>FreeRTOS: para la gestión de tareas en tiempo real</li>
     </ul>
-    <li>Comunicación en tiempo real</li>
+    <li>EDU-CIAA</li>
     <ul>
-      <li>Mosquitto Broker (MQTT): utilizado para la comunicación en tiempo real entre la aplicación web y el ESP32, permitiendo la transmisión de datos de forma eficiente y ligera.</li>
-    </ul> 
-    <li>ESP32</li>
-    <ul>
-      <li>Modo Soft AP: configurado como punto de acceso para permitir la conexión directa de dispositivos al ESP32.</li>
-      <li>Programación en C: se utilizó para implementar la lógica de control del ESP32, incluyendo el manejo de sensores, motores y comunicación MQTT.</li>
-      <li>PlatformIO: entorno de desarrollo integrado en Visual Studio Code para la programación y gestión del firmware del ESP32.</li>
-      <li>DC Motors: utilizados para el movimiento del dispositivo, controlados mediante PWM para un desplazamiento preciso.</li>
-      <li>Servo: utilizado para movimientos angulares específicos, controlado también mediante PWM.</li>
-      <li>Sensores I2C: dos sensores conectados al ESP32 mediante el protocolo I2C para la recopilación de datos en tiempo real.</li>
+      <li>C: como lenguaje de programacion</li>
+      <li>Firmware v3: libreria oficial para la programacion de la EDU-CIAA.</li>
     </ul>
   </ol>
 </details>
@@ -68,46 +62,33 @@ Este vehículo se inspira principalmente en los robots para desactivación de ar
 <details open="open">
   <summary>Tabla de contenidos</summary>
   <ol>
-    <li><a href="#prerequisites-software">➤ Prerequisitos-Software</a></li>
+    <li><a href="#prerequisites">➤ Prerequisitos</a></li>
     <li><a href="#installation-esp32">➤ Instalación y Configuración del ESP32</a></li>
-    <li><a href="#installation-mosquitto-broker">➤ Instalación y Configuración del Broker MQTT</a></li>
-    <li><a href="#installation-backend">➤ Instalación y Configuración del Backend</a></li>
-    <li><a href="#installation-mongodb">➤ Instalación y Configuración de MongoDB</a></li>
-    <li><a href="#installation-frontend">➤ Instalación y Configuración del Frontend<</a></li>
+    <li><a href="#installation-edu-ciaa">➤ Instalacion y Configuracion del IDE, herramiente y Firmware para la EDU-CIAA</a></li>
+    <li><a href="#installation-cli">➤ Instalacion y Ejecucion del Cliente</a></li>
     <li><a href="#execution-steps">➤ Pasos para la Ejecución del Proyecto</a></li>
-    <li><a href="#video">➤ Video demostrativo</a></li>
-    <li><a href="#bitacora">➤ Bitácora</a></li>
     <li><a href="#authors">➤ Autores</a></li>
     <li><a href="#coordinador">➤ Coordinador</a></li>
   </ol>
 </details>
 
 <!-- Prerequisitos SOFTWARE -->
-<h1 id="prerequisites-software">🛠️ Prerequisitos-Software</h1>
+<h1 id="prerequisites">🛠️ Prerequisitos</h1>
 <details>
-  <summary>Prerequisitos-Software</summary>
+  <summary>Prerequisitos</summary>
   <p>El proyecto requiere la instalación de los siguientes componentes de software:</p>
   <ul>
     <li>
-      <b>Visual Studio Code:</b> Editor de código necesario para el desarrollo tanto del frontend y backend, como del firmware para el ESP32.
+      <b>Visual Studio Code:</b> Editor de código necesario para el desarrollo del Cliente.
     </li>
     <li>
-      <b>PlatformIO:</b> Extensión de Visual Studio Code utilizada para compilar y cargar el firmware en el ESP32.
+      <b>Arduino IDE:</b> Ide para la programacion ESP32.
     </li>
     <li>
-      <b>Java:</b> Requerido para ejecutar el backend en Spring Boot.
+      <b>Python:</b> Lenguaje para desarrollar el CLI.
     </li>
     <li>
-      <b>Maven:</b> Herramienta de gestión de dependencias y construcción para el backend en Spring Boot.
-    </li>
-    <li>
-      <b>Node.js:</b> Necesario para Angular, incluyendo el uso de npm para la instalación de dependencias.
-    </li>
-    <li>
-      <b>MongoDB:</b> Base de datos NoSQL utilizada para el almacenamiento de datos de la aplicación.
-    </li>
-    <li>
-      <b>Broker Mosquitto:</b> Servidor MQTT utilizado para la comunicación en tiempo real con el ESP32.
+      <b>IDE EDU-CIAA:</b> Version de Eclipse con todas las herramientas necesarias para programar y testear la EDU-CIAA.
     </li>
   </ul>
 </details>
@@ -129,105 +110,6 @@ Este vehículo se inspira principalmente en los robots para desactivación de ar
   <p>Tras estos pasos, el ESP32 estará configurado y listo para ejecutar las instrucciones del proyecto.</p>
 </details>
 
----
-
-<!-- Prerequisitos BROKER MQTT-->
-<h1 id="installation-mosquitto-broker">🕸️ Instalación y Configuración del Broker MQTT</h1>
-<details>
-  <summary>Instalación y Configuración del Broker Mosquitto</summary>
-  <ol>
-    <li>Descarga el instalador de Mosquitto MQTT Broker desde el sitio oficial de Eclipse Mosquitto: <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a>.</li>
-    <li>Ejecuta el instalador y sigue las instrucciones para completar la instalación.</li>
-    <li>Dirígete a la carpeta de instalación. Por defecto, se encuentra en:
-      <pre><code>C:\Program Files\mosquitto</code></pre>
-    </li>
-    <li>Configura el Broker editando el archivo <code>mosquitto.conf</code> con un editor de texto (ej. Notepad++ o Visual Studio Code). Añade las siguientes líneas para permitir conexiones anónimas y habilitar la salida de eventos por consola:
-      <pre><code>
-listener 1883
-allow_anonymous true
-log_type all
-connection_messages true
-log_timestamp true
-      </code></pre>
-    </li>
-    <li>Guarda los cambios en el archivo de configuración.</li>
-    <li>Abre una consola en modo administrador y navega hasta la carpeta de instalación:
-      <pre><code>cd "C:\Program Files\mosquitto"</code></pre>
-    </li>
-    <li>Inicia el Broker Mosquitto utilizando el siguiente comando:
-      <pre><code>mosquitto -v -c mosquitto.conf</code></pre>
-      <p>Este comando inicia el Broker en modo verbose, mostrando todos los eventos y conexiones en tiempo real en la consola.</p>
-    </li>
-    <li>El Broker MQTT ahora debería estar en funcionamiento y listo para gestionar las conexiones.</li>
-  </ol>
-</details>
-
----
-
-<!-- Prerequisitos BACKEND -->
-<h1 id="installation-backend">🔧 Instalación y Configuración del Backend</h1>
-<details>
-  <summary>Instalación y Configuración del Servidor Backend</summary>
-  <ol>
-    <li>Abre Visual Studio Code y clona el repositorio.</li>
-    <li>Posicionate en la carpeta del repositorio: <code>2024-A2-LIDAR-VL53L0X</code>.</li>
-    <li>Accede a la carpeta del backend con el siguiente comando:</li>
-    <pre><code>cd backend</code></pre>
-    <li>En la consola, ejecuta el siguiente comando para instalar las dependencias del proyecto:</li>
-    <pre><code>mvn clean install</code></pre>
-    <li>Para levantar el servidor, ejecuta el siguiente comando:</li>
-    <pre><code>mvn spring-boot:run</code></pre>
-    <li>El servidor se iniciará y quedará a la espera de conectarse a la red del ESP32.</li>
-  </ol>
-  <p>El backend estará listo para funcionar con el ESP32.</p>
-</details>
-
----
-
-<!-- Prerequisitos MongoDB -->
-<h1 id="installation-mongodb">📦 Instalación y Configuración de MongoDB</h1>
-<details>
-  <summary>Instalación de MongoDB</summary>
-  <ol>
-    <li>Descarga e instala MongoDB desde el instalador oficial.</li>
-    <li>No es necesaria ninguna configuración adicional, solo asegúrate de habilitar la ejecución en segundo plano.</li>
-    <li>El backend se conectará automáticamente a MongoDB al levantarse el servidor.</li>
-  </ol>
-  <p>MongoDB estará listo para almacenar los datos del proyecto.</p>
-</details>
-
----
-
-<!-- Prerequisitos FRONTEND -->
-<h1 id="installation-frontend">🌐 Instalación y Configuración del Frontend</h1>
-<details>
-  <summary>Instalación y Configuración del Servidor Frontend</summary>
-  <ol>
-    <li>Abre Visual Studio Code y clona el repositorio.</li>
-    <li>Posicionate en la carpeta del repositorio: <code>2024-A2-LIDAR-VL53L0X</code>.</li>
-    <li>Accede a la carpeta del frontend con el siguiente comando:</li>
-    <pre><code>cd Frontend</code></pre>
-    <li>En la consola, ejecuta el siguiente comando para instalar las dependencias del proyecto:</li>
-    <pre><code>npm install</code></pre>
-    <li>Verifica la correcta instalación de Angular ejecutando el siguiente comando:</li>
-    <pre><code>ng version</code></pre>
-    <li>Para levantar el servidor, ejecuta el siguiente comando:</li>
-    <pre><code>ng serve</code></pre>
-    <li>La página estará accesible en el siguiente enlace: <a href="http://localhost:4200">http://localhost:4200</a>.</li>
-  </ol>
-  <p>El frontend estará listo para interactuar con el backend y el ESP32.</p>
-</details>
-
-
----
-
-<!-- video explicativo-->
-<h1 id="video">:clapper: Video del Proyecto </h1>
-<p>A continuacion se deja un link, a un video explicativo sobre el robot y su funcionamiento: <a href="https://drive.google.com/file/d/1UwNFf568G4iCPq6gYDLypO1Pdrs1-ocO/view?usp=drive_link">Video</a></p>
-
-<h1 id="bitacora">:bookmark_tabs: Bitácora</h1>
-
-<p>Como parte del proyecto se redacto una bitacora con el "dia a dia" del mismo: <a href="https://github.com/tpII/2024-A4-QLEARNING-ESP32/wiki/Bitacora-A4-%E2%80%90-Crawler-Robot-con-ESP32)">Bitacora</a>.</p>
 
 <h1 id="authors">✒️ Autores</h1>
 
