@@ -4,7 +4,7 @@
 
 <!-- Logo -->
 <div align="center">
-  <img src="https://github.com/tpII/2024-A2-LIDAR-Vl53l0/blob/master/Doc/Img/IMG-20250205-WA0008.jpg" width="35%">
+  <img src="" width="35%">
 </div>
 
 <!-- Descripción del proyecto -->
