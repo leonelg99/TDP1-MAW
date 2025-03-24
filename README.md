@@ -4,7 +4,7 @@
 
 <!-- Logo -->
 <div align="center">
-  <img src="" width="35%">
+  <img src="https://github.com/leonelg99/TDP1-MAW/blob/main/docs/maw.jpg" width="35%">
 </div>
 
 <!-- Descripción del proyecto -->
