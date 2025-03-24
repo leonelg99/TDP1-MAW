@@ -1,8 +1,20 @@
-/*=============================================================================
- * Program: MAW
- * Date: 2023/09/07
- * Version: 1
- *===========================================================================*/
+/**
+ * @file MAW.h
+ * @brief Definitions and declarations for the main program of the vehicle and robotic arm system on the EDU-CIAA platform
+ * 
+ * This file contains macro definitions and function declarations for the main program. 
+ * It includes the public function dependencies required for the system's operation.
+ * 
+ * @version 1.0
+ * @date 2025-03-12
+ * 
+ * @note
+ * - Ensure the components are correctly connected to the hardware.
+ * - Call 'programInit' before invoking other functions.
+ * 
+ * @author Guerrico Leonel - Ossola Florencia - Perez Balcedo Octavio
+ * 
+ */
 
 /*=====[Avoid multiple inclusion - begin]====================================*/
 

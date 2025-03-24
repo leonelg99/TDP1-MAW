@@ -1,12 +1,24 @@
-/*
- * UART.h
- *
- *  Created on: 13 oct. 2023
- *      Author: lguer
+/**
+ * @file UART.h
+ * @brief Definitions and declarations for UART communication on the EDU-CIAA platform
+ * 
+ * This file contains macro definitions and function declarations for initializing and configuring the UART. 
+ * It includes functions to send and receive standard messages through the UART channel.
+ * 
+ * @version 1.0
+ * @date 2025-03-12
+ * 
+ * @note
+ * - Ensure the components are correctly connected to the hardware.
+ * - Call 'serialInit' before invoking other functions.
+ * 
+ * @author Guerrico Leonel
+ * 
  */
 
 #ifndef PROGRAM_MAW_INC_UART_H_
 #define PROGRAM_MAW_INC_UART_H_
+
 /*
  * Libraries
  */
@@ -15,14 +27,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define UART UART_232	//Mask to avoid write UART_232
+#define UART UART_232	// Mask to avoid writing UART_232
 
 /*
  * Public functions
- * serialInit(): inicitialize uart.
- * receiveMsg(): check if there is any data to receive and if it's in the correct format.
- * If it's then save it and return 0.
- * sendMsg(): send one of the standard messages (see UART.c file) indicate by the parameter(index).
+ * serialInit(): Initializes the UART.
+ * receiveMsg(): Checks if there is data to receive and if it is in the correct format.
+ * If so, it stores the data and returns 0.
+ * sendMsg(): Sends one of the standard messages (see UART.c file) indicated by the parameter (index).
  */
 void serialInit(void);
 uint8_t receiveMsg(uint8_t *, uint8_t);
