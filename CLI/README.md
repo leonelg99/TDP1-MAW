@@ -8,18 +8,15 @@ Este cliente fue desarrollado para el proyecto **MAW** con el objetivo de facili
 El cliente permite la comunicación entre el usuario y el vehículo, abarcando las siguientes tareas:
 
 ### 🔹 Visualización de datos
-Durante la ejecución del cliente, el usuario podrá observar información relevante en tiempo real, incluyendo:
+Durante la ejecución del cliente, el usuario podrá observar información relevante incluyendo:
 - **Transmisión de video** del vehículo.
-- **Mensajes entrantes y salientes**, tales como:
-  - Nivel de batería.
-  - Mensajes de error.
-  - Otros estados del sistema.
+- **Mensajes entrantes y salientes**
 
 ### 🔹 Control del vehículo
 - **Envío de instrucciones mediante un joystick** para manejar el vehículo.
 
 ### 🔹 Intercambio de mensajes
-- **Comunicación bidireccional con el ESP32**, permitiendo el envío y recepción de datos en tiempo real.
+- **Comunicación bidireccional con el ESP32**, permitiendo el envío y recepción de datos.
 
 ---
 
