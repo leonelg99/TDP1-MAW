@@ -1,13 +1,26 @@
+"""
+This module initializes and manages the GUI for the project.
+It sets up the main application window, displays the camera feed, 
+shows event messages, and handles UI components.
+"""
 import tkinter as tk
 from PIL import Image, ImageTk
 import datetime
 
-# Variable global para la ventana
+# Global variable for the main application window
 WINDOW = tk.Tk()
 
-# Inicializa la ventana
 def windowInit():
-    # Configurar la ventana
+    """
+    Initializes the main application window.
+
+    - Sets the window title and background color.
+    - Configures the window size and prevents excessive resizing.
+    - Defines the grid layout for UI elements.
+
+    Returns:
+        None
+    """
     #WINDOW = tk.Tk()
     WINDOW.title("MAW")
     WINDOW.resizable(1, 1)
@@ -18,41 +31,59 @@ def windowInit():
     WINDOW.rowconfigure(0, weight=2)
     WINDOW.rowconfigure(1, weight=8)
 
-# Carga y muestra la imagen
+
 def cargar_y_mostrar_imagen():
+    """
+    Loads and displays the application logo.
+
+    - Loads an image from the file system.
+    - Resizes it to fit within a specified area.
+    - Displays the image within the UI.
+
+    Returns:
+        None
+    """
     img = Image.open("LOGO.png")
     max_width = 280
     max_height = 216
     img.thumbnail((max_width, max_height))
-    # Crear una PhotoImage desde la imagen
+    
     imagen = ImageTk.PhotoImage(img)
     LOGO_LABEL = tk.Label(image=imagen, anchor="center", bg="darkgrey")
-    LOGO_LABEL.image = imagen  # Mantén una referencia a la imagen
+    LOGO_LABEL.image = imagen   # Keep a reference of the image
 
-    # Configurar el tamaño máximo para la columna y fila
+    # Set the maximum size for the column and row
     LOGO_LABEL.grid(row=0, column=1, sticky="nsew")
     LOGO_LABEL.grid_rowconfigure(0, weight=1)
     LOGO_LABEL.grid_columnconfigure(1, weight=1)
 
-# Crea la cuadrícula de la ventana
-def windowsGrid():
-    # Camera
-   
 
+def windowsGrid():
+    """
+    Creates and configures the main UI layout.
+
+    - Displays the camera feed area.
+    - Loads and places the application logo.
+    - Sets up a terminal for event logging.
+    - Adds a scrollbar for message navigation.
+
+    Returns:
+        None
+    """
     img=Image.open("not_signal.jpg")
     #img.thumbnail((768,432))
     #img.resize((68,20))
     imagen=ImageTk.PhotoImage(img)
     global CAMERA_LABEL
     CAMERA_LABEL = tk.Label(image=imagen,width=768, height=432, anchor="center",bg="black")
-    CAMERA_LABEL.image = imagen  # Mantén una referencia a la imagen
+    CAMERA_LABEL.image = imagen  
     CAMERA_LABEL.grid(row=0, column=0,rowspan=2, sticky="nsew")
  
    
     # Logo
     cargar_y_mostrar_imagen()
 
-    # Terminal
+    # Terminal Frame
     TERMINAL_FRAME = tk.Frame(WINDOW, bg="darkgrey")
     TERMINAL_FRAME.grid(row=1, column=1, rowspan=2, sticky="nsew")
     TERMINAL_FRAME.columnconfigure(1, weight=4)
@@ -81,14 +112,33 @@ def windowsGrid():
     TERMINAL_SCROLLBAR.grid(row=0, column=1, sticky="nsew")
     TERMINAL_TEXT["yscrollcommand"] = TERMINAL_SCROLLBAR.set
 
-# Agrega un mensaje a la terminal
+
 def add_message(message,style=None):
-    timestamp = datetime.datetime.now().strftime("%H:%M:%S")  # Obtiene la hora actual en formato HH:MM
+    """
+    Adds a message to the terminal.
+
+    Args:
+        message (str): The message to display.
+        style (str, optional): The style tag for the message.
+
+    Returns:
+        None
+    """
+    timestamp = datetime.datetime.now().strftime("%H:%M:%S")  
     TERMINAL_TEXT.insert(tk.END, timestamp + " - ")
     TERMINAL_TEXT.insert(tk.END, message + "\n", style)
     TERMINAL_TEXT.see(tk.END)
 
-# Actualiza la cámara
+
 def update_camera(image):
+    """
+    Updates the camera feed display.
+
+    Args:
+        image (ImageTk.PhotoImage): The image to display in the camera feed.
+
+    Returns:
+        None
+    """
     CAMERA_LABEL.configure(image=image)
     CAMERA_LABEL.image = image

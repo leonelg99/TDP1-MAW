@@ -1,3 +1,8 @@
+"""
+This module handles receiving and processing images from an ESP32-CAM. 
+It retrieves the camera stream, decodes the image, processes it, 
+and updates the graphical user interface with the latest frame.
+"""
 from shared_variables import ESP32_CAM_IP, ESP32_CAM_PORT
 from interfaz import update_camera
 import cv2
@@ -11,11 +16,23 @@ import datetime
 import time
 import sys
 
-# URL de la cámara
+# Camera stream URL
 url = 'http://192.168.4.1:8020'
 
-# Recibe la imagen de la cámara
 def recivirImagen():
+    """
+    Continuously retrieves and processes images from the ESP32-CAM.
+
+    - Reads image data from the camera stream.
+    - Decodes and resizes the image.
+    - Converts the image format for display in the GUI.
+    - Updates the camera feed in the interface.
+
+    Handles connection errors and attempts reconnection if the stream fails.
+
+    Returns:
+        None
+    """
     flag = 0
     CAMERA_BUFFRER_SIZE=4096
     stream=urlopen(url)
