@@ -123,9 +123,7 @@ Este vehículo se inspira principalmente en los robots para desactivación de ar
 
 <h1 id="coordinador">📌 Coordinador</h1>
 
-| Coordinador                                    | GitHub                                                                                                 |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **Alan Fabián Castelli** _Profesor - Ayudante_ | [![Repo](https://badgen.net/badge/icon/aCastelli95?icon=github&label)](https://github.com/aCastelli95) |
+<p>Profesores a cargo de la cátedra “Taller de Proyecto 1” de la Facultad de Ingeniería de la Universidad Nacional de La Plata.</p>
 
 <!-- Licencia -->
 <h1 id="license">📄 Licencia</h1>
