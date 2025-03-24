@@ -1,44 +1,93 @@
-<h1><b>Proyecto MAW</b></h1>
+# Cliente - MAW
 
-<p>Este es un proyecto para la materia Taller de Proyecto I de la carrera de Ingenieria en Computación de la Universidad Nacional de La Plata. Consiste en un vehiculo con cuatro motores, el cual es controlado mediante un joystick. Además, esta compuesto de una cámara con la que realiza una transmisión de video para poder facilitar el control del vehiculo.</p>
-<p>Para facilitar el control del vehiculo se diseño un software de control mediante python con el cual recibir video, y el envio y recepcion de mensajes.</p>
+Este cliente fue desarrollado para el proyecto **MAW** con el objetivo de facilitar la interacción entre el usuario y el vehículo. Está programado en **Python** e integra diversas librerías necesarias para su funcionamiento.
 
-<h2><b>Software de Control</b></h2>
-<p>Este repositorio contiene el codigo del Software de Control para poder comunicarse y controlar el vehiculo.</p>
-<p>El programa consta de una ventan unica donde se visualiza el video y una consola donde puede ver los mensajes salientes y entrantes. Mientras que 2do plano mantiene 3 threads, uno que recive la transmision de video, otro consultando si hay algun mensaje que recivir, y por ultimo uno que lee continuamente el mando conectado, procesa los inputs y envia el mensaje corespondiete al vehiculo.</p>
+---
 
-<h2><b>Requerimientos</b></h2>
-El programa solo requiere estar conectado a la red generada por el vehiculo, tener un mando conectado y las bibliotecas correspondiendes instaladas:
-<li>Tkinter</li>
-<li>Pygame</li>
-<li>cv2</li>
-<li>PIL</li>
-<li>urllib</li>
-<li>numpy</li>
+## 📌 Funcionalidad
+El cliente permite la comunicación entre el usuario y el vehículo, abarcando las siguientes tareas:
 
-<h2><b>Advertencia</b></h2>
-<p>El programa surge de la necesidad de tener un software que permita controlar el vehiculo, mas no era un objetivo del proyecto, por tanto se opto por la simplicidad y funcionalidad. Este software puede presentar errores sino se usa de la manera y contexto adecuado.</p>
+### 🔹 Visualización de datos
+Durante la ejecución del cliente, el usuario podrá observar información relevante en tiempo real, incluyendo:
+- **Transmisión de video** del vehículo.
+- **Mensajes entrantes y salientes**, tales como:
+  - Nivel de batería.
+  - Mensajes de error.
+  - Otros estados del sistema.
 
-<h2><b>Modo de Uso</b></h2>
+### 🔹 Control del vehículo
+- **Envío de instrucciones mediante un joystick** para manejar el vehículo.
 
-<p><b>Adevertencia:</b> el programa se diseño basado en un mando generico disponible, y no fue testeado en otro, por tanto no se asegura que las teclas correspondan con otros mandos.</p>
-<p><b>Adevertencia:</b> no precione el boton MODE conectado al vehiculo, puede generar un error que requiera un reinicio del vehiculo.</p>
+### 🔹 Intercambio de mensajes
+- **Comunicación bidireccional con el ESP32**, permitiendo el envío y recepción de datos en tiempo real.
 
-<h3>Controles</h3>
+---
 
-<li><b>1:</b> Cambio de resolucion de la Camara (NO FUNCIONA)</li>
-<li><b>2:</b> ON/OFF led de la camara</li>
-<li><b>Start:</b> ON/OFF Leds frontales</li>
-<li><b>Select:</b> ACTIVAR/DESACTIVAR brazo robotico.</li>
-<li><b>R2:</b> Freno/Abrir Garra</li>
-<li><b>R1:</b> Cerrar Garra</li>
-<li><b>L1:</b> Abrir garra por completo</li>
-<li><b>L2:</b> Cerrar garra por completoC</li>
-<li><b>R3:</b> Brazo go Home (el brazo regresa a su posicion de estacionamiento) </li>
-<li><b>SR:</b>
-        <ul>
-            <li>Control del Vehículo: Adelante/Atrás/Rotar/Doblar</li>
-            <li>Control del brazo: Extender/Retraer/Rotar</li>
-        </ul>
-    </li>
-<li><b>SL:</b> Control del Brazo: Elevar/Bajar</li>
+## 📂 Estructura del Cliente
+El cliente está compuesto por las siguientes librerías, ubicadas dentro de la carpeta `CLI`:
+
+| Módulo               | Descripción |
+|----------------------|-------------|
+| **CLI**             | Programa principal, crea la ventana e inicializa los threads necesarios. |
+| **Connection**      | Manejo de mensajes: creación, envío y recepción. |
+| **Interfaz**        | Crea la ventana principal y actualiza la cámara. |
+| **Joystick**        | Configuración y lectura del joystick. |
+| **Shared_variables**| Contiene las variables de configuración de la IP y puerto del ESP32-CAM. |
+| **Video**           | Maneja la transmisión del video y la recepción de imágenes de la cámara. |
+
+---
+
+## ⚙️ Pasos Previos a la Ejecución
+
+### 📌 Requisitos
+Para ejecutar el cliente correctamente, es necesario instalar las siguientes librerías:
+```sh
+pip install tkinter pygame opencv-python pillow urllib3 numpy
+```
+
+### 📌 Configuración previa
+El cliente debe estar conectado a la red generada por el **ESP32**. Aunque existen valores predeterminados para la IP y el puerto, estos pueden modificarse en los siguientes archivos:
+
+- **`shared_variables.py`**:
+  ```python
+  ESP32_CAM_IP = "192.168.4.1"
+  ESP32_CAM_PORT = 80
+  ```
+
+- **`video.py`**:
+  ```python
+  URL = "http://192.168.4.1:8020"
+  ```
+
+---
+
+## 🚀 Ejecución del Cliente
+Para ejecutar el cliente, se debe el siguiente comando en la terminal desde el directorio CLI del proyecto del cliente:
+```sh
+python CLI.py
+```
+Esto iniciará la interfaz del cliente y establecerá la conexión con el ESP32.
+
+---
+
+## 🎮 Controles
+
+### ✅ Controles testeados y funcionando
+- **2**: Encender/Apagar LED de la cámara.
+- **Start**: Encender/Apagar LEDs frontales.
+- **SR**: Adelante/Atrás/Rotar/Doblar.
+
+### ⚠️ Controles no implementados o no testeados
+- **1**: Cambio de resolución de la cámara.
+- **Select**: Activar/Desactivar brazo robótico.
+- **R2**: Freno/Abrir garra.
+- **R1**: Cerrar garra.
+- **L1**: Abrir garra completamente.
+- **L2**: Cerrar garra completamente.
+- **R3**: Brazo regresa a su posición de estacionamiento.
+- **SL**: Control del brazo (elevar/bajar).
+
+---
+
+## ⚠️ Advertencias
+- **No presionar el botón MODE** conectado al vehículo, ya que podría generar un error que requiera reiniciar el sistema.
