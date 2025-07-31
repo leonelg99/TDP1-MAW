@@ -1,90 +1,117 @@
-# Cliente - MAW
+# MAW CLI — Cliente de Control (Python)
 
-Este cliente fue desarrollado para el proyecto **MAW** con el objetivo de facilitar la interacción entre el usuario y el vehículo. Está programado en **Python** e integra diversas librerías necesarias para su funcionamiento.
+![MAW CLI Logo](../docs/maw_cli.png)
+
+## Descripción
+
+**MAW CLI** es la interfaz de usuario desarrollada en Python para controlar el robot MAW desde una PC. Permite enviar comandos de movimiento, encender/apagar luces y visualizar el video en tiempo real procedente del módulo ESP32-CAM.
+
+> El CLI se ejecuta en paralelo con múltiples hilos (*threads*) para gestionar la ventana principal, lectura del joystick, recepción de mensajes y streaming de video según el diseño descrito en el informe final. fileciteturn1file0
+
+<details>
+<summary>📝 Características Principales</summary>
+
+* Interfaz gráfica con `Tkinter` para video y consola de mensajes
+* Lectura de joystick mediante `pygame` (funciones `joystickInit()` y `joystickRead()`)
+* Transmisión de video en ventana Python vía función `receiveImage()`
+* Envío y recepción de comandos con formato `dest:cmd:val1:val2` (librería `connection`)
+* Registro de mensajes y estilos con `add_message()` y `update_camera()`
+* Arquitectura de 4 *threads* para concurrencia: GUI, joystick, conexión, video fileciteturn1file4
+
+</details>
+
+<details>
+<summary>🛰️ Tecnologías y Librerías</summary>
+
+* **Python 3.x**
+* **Tkinter** — Interfaz gráfica de la ventana principal fileciteturn1file2
+* **Pillow (PIL)** — Procesamiento de imágenes
+* **Pygame** — Lectura de joystick
+* **Threading** — Ejecución concurrente
+* **Socket/TCP** — Comunicación con ESP32-CAM
+
+</details>
+
+## 📚 Tabla de Contenidos
+
+1. [Prerequisitos](#prerequisitos)
+2. [Instalación](#instalaci%C3%B3n)
+3. [Ejecución](#ejecuci%C3%B3n)
+4. [Estructura de Archivos](#estructura-de-archivos)
+5. [Contribuciones](#contribuciones)
+6. [Licencia](#licencia)
 
 ---
 
-## 📌 Funcionalidad
-El cliente permite la comunicación entre el usuario y el vehículo, abarcando las siguientes tareas:
+## 🛠️ Prerequisitos {#prerequisitos}
 
-### 🔹 Visualización de datos
-Durante la ejecución del cliente, el usuario podrá observar información relevante incluyendo:
-- **Transmisión de video** del vehículo.
-- **Mensajes entrantes y salientes**
+* **Python 3.8 o superior**
+* **Joystick USB** compatible
+* Paquetes de Python:
 
-### 🔹 Control del vehículo
-- **Envío de instrucciones mediante un joystick** para manejar el vehículo.
-
-### 🔹 Intercambio de mensajes
-- **Comunicación bidireccional con el ESP32**, permitiendo el envío y recepción de datos.
+  ```bash
+  pip install tkinter pygame pillow
+  ```
+* Red Wi-Fi con acceso al ESP32-CAM (SSID y contraseña definidos en el firmware)
 
 ---
 
-## 📂 Estructura del Cliente
-El cliente está compuesto por las siguientes librerías, ubicadas dentro de la carpeta `CLI`:
+## ⚙️ Instalación {#instalaci%C3%B3n}
 
-| Módulo               | Descripción |
-|----------------------|-------------|
-| **CLI**             | Programa principal, crea la ventana e inicializa los threads necesarios. |
-| **Connection**      | Manejo de mensajes: creación, envío y recepción. |
-| **Interfaz**        | Crea la ventana principal y actualiza la cámara. |
-| **Joystick**        | Configuración y lectura del joystick. |
-| **Shared_variables**| Contiene las variables de configuración de la IP y puerto del ESP32-CAM. |
-| **Video**           | Maneja la transmisión del video y la recepción de imágenes de la cámara. |
+1. Navega al directorio del CLI:
+
+   ```bash
+   cd control_pc
+   ```
+2. Instala dependencias si es necesario:
+
+   ```bash
+   pip install tkinter pygame pillow
+   ```
 
 ---
 
-## ⚙️ Pasos Previos a la Ejecución
+## 🚀 Ejecución {#ejecuci%C3%B3n}
 
-### 📌 Requisitos
-Para ejecutar el cliente correctamente, es necesario instalar las siguientes librerías:
-```sh
-pip install tkinter pygame opencv-python pillow urllib3 numpy
+1. Conecta el joystick a la PC.
+2. Asegúrate de estar en la red Wi-Fi generada por el ESP32-CAM.
+3. Ejecuta el cliente:
+
+   ```bash
+   python main.py
+   ```
+4. La interfaz mostrará el video a la izquierda y la consola de mensajes a la derecha.
+5. Controles del joystick:
+
+   * Stick derecho: movimiento (adelante, atrás, girar)
+   * Botón 2: flash de cámara
+   * R2: frenar vehículo
+
+---
+
+## 📂 Estructura de Archivos {#estructura-de-archivos}
+
+```
+control_pc/
+├── main.py        # Punto de entrada de la aplicación
+├── connection.py  # Envío y recepción de mensajes TCP
+├── joystick.py    # Inicialización y lectura de joystick
+├── gui.py         # Diseño de ventana con Tkinter
+├── video.py       # Streaming de video con receiveImage()
+└── utils.py       # add_message(), update_camera(), formato de mensajes
 ```
 
-### 📌 Configuración previa
-El cliente debe estar conectado a la red generada por el **ESP32**. Aunque existen valores predeterminados para la IP y el puerto, estos pueden modificarse en los siguientes archivos:
+---
 
-- **`shared_variables.py`**:
-  ```python
-  ESP32_CAM_IP = "192.168.4.1"
-  ESP32_CAM_PORT = 80
-  ```
+## 🤝 Contribuciones {#contribuciones}
 
-- **`video.py`**:
-  ```python
-  URL = "http://192.168.4.1:8020"
-  ```
+1. Haz un *fork* del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit.
+4. Envía un *Pull Request* describiendo los cambios.
 
 ---
 
-## 🚀 Ejecución del Cliente
-Para ejecutar el cliente, se debe el siguiente comando en la terminal desde el directorio CLI del proyecto del cliente:
-```sh
-python CLI.py
-```
-Esto iniciará la interfaz del cliente y establecerá la conexión con el ESP32.
+## 📄 Licencia {#licencia}
 
----
-
-## 🎮 Controles
-
-### ✅ Controles testeados y funcionando
-- **2**: Encender/Apagar LED de la cámara.
-- **Start**: Encender/Apagar LEDs frontales.
-- **SR**: Adelante/Atrás/Rotar/Doblar.
-
-### ⚠️ Controles no implementados o no testeados
-- **1**: Cambio de resolución de la cámara.
-- **Select**: Activar/Desactivar brazo robótico.
-- **R2**: Freno/Abrir garra.
-- **R1**: Cerrar garra.
-- **L1**: Abrir garra completamente.
-- **L2**: Cerrar garra completamente.
-- **R3**: Brazo regresa a su posición de estacionamiento.
-- **SL**: Control del brazo (elevar/bajar).
-
----
-
-## ⚠️ Advertencias
-- **No presionar el botón MODE** conectado al vehículo, ya que podría generar un error que requiera reiniciar el sistema.
+Este subdirectorio forma parte del proyecto MAW, licenciado bajo MIT. Consulta el archivo raíz `LICENSE` para más detalles.
