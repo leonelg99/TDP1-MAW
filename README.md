@@ -9,11 +9,10 @@
 
 <!-- Descripción del proyecto -->
 
-Desde el momento en que decidimos inscribirnos en la materia de **Taller de Proyecto 1** debatimos distintas ideas para llevar a cabo en la misma. 
-Para ello nos basamos en 2 ejes principales, que sea móvil, es decir que proyectó fuera “algo” que se mueva y no algo estático; y por otro lado algo que a criterio personal nuestro, fuera divertido y desafiante, al mismo tiempo que nos permitiera sacar provecho de la placa (**EDU-CIAA**) dentro de los límites de la materia.
-A partir de estas premisas, se nos ocurrieron varias ideas que en principio nos gustaron para llevar a cabo, terminando por elegir el diseño e implementacion de un vehiculo robot.
-No obstante, la idea de un vehículo a criterio personal no nos parecía suficiente por sí misma, por lo que decidimos complementar la misma con un brazo robótico y una cámara, que además podremos controlar mediante una conexión WIFI.
-Este vehículo se inspira principalmente en los robots para desactivación de artefactos explosivos que las fuerzas de seguridad utilizan alrededor del mundo, los cuales generalmente constan de un vehículo con un brazo robótico, una cámara y medio de control a distancia.
+<h2 id="resumen-del-proyecto">Resumen del Proyecto</h2>
+<p><strong>MAW (Mobile Arm Wifi)</strong> es un robot de cuatro ruedas controlado remotamente por Wi-Fi con video en tiempo real mediante una cámara integrada. Utiliza una EDU-CIAA-NXP para el control de sensores y motores, y un ESP32-CAM para la conectividad. Incluye una estructura física impresa en 3D y un shield electrónico personalizado.</p>
+<p>Una aplicación en Python permite controlar el robot desde una PC con joystick.</p>
+<blockquote>Nota: Las consideraciones específicas para el Cliente, ESP32 y EDU-CIAA se encuentran en sus respectivos README dentro de cada subdirectorio.</blockquote>
 
 
 <details>
