@@ -1,8 +1,92 @@
-<h1><b>Firmware EDU-CIAA - MAW</b></h1> <p>Este firmware está diseñado para la EDU-CIAA del proyecto MAW. Su función principal es ejecutar las instrucciones recibidas por UART desde el ESP32-CAM, actuando como un esclavo que procesa los comandos para controlar los motores, servomotores y otros dispositivos de la plataforma.</p>
-<h2><b>🚀 Función del Firmware</b></h2> <ul> <li><b>Recepción de Comandos:</b> Recibe únicamente datos mediante UART desde el ESP32-CAM y ejecuta las órdenes según lo programado.</li> <li><b>Ejecución de Instrucciones:</b> Se emplean las librerías <b>Arm</b>, <b>Comands</b>, <b>MotorShield2</b> y <b>UART</b> para interpretar y ejecutar los comandos que controlan los movimientos del vehículo MAW.</li> <li><b>Integración con MAW:</b> El firmware se integra como parte del programa principal MAW, cumpliendo la función específica de traducir las instrucciones provenientes del ESP32.</li> </ul>
-<h2><b>🔧 Desarrollo</b></h2> <p>El firmware para la EDU-CIAA fue desarrollado utilizando el entorno oficial basado en <b>Eclipse</b> adaptado para la placa EDU-CIAA. Se utilizó el <b>Firmware_v3</b>, que integra todas las librerías necesarias para la comunicación a través de UART.</p> <p>Las librerías empleadas son:</p> <ul> <li><b>Arm</b>: Funciones específicas para el control y la administración de recursos de la placa EDU-CIAA.</li> <li><b>Comands</b>: Se encarga de la decodificación y ejecución de los comandos recibidos.</li> <li><b>MotorShield2</b>: Gestiona el control de los motores del vehículo, utilizando la comunicación a través del chip L293D y el convertidor 74HC595.</li> <li><b>UART</b>: Biblioteca dedicada al manejo de la comunicación serie con el ESP32-CAM.</li> <li><b>MAW</b>: El programa principal del proyecto, que integra todas las funcionalidades.</li> </ul>
-<h2><b>📦 Dependencias</b></h2> <ul> <li>Firmware_v3 (libreria core del fabricante)</li> <li>Hardware: EDU-CIAA, MotorShield2, servomotores, motores DC y demás componentes del vehículo.</li> </ul>
-<h2><b>🛠 Compilación y Carga del Firmware</b></h2> <ol> <li> <b>Instalación del IDE:</b> Descarga e instala la versión oficial de <b>Eclipse</b> adaptada para la placa EDU-CIAA. (Consulta <a href="https://github.com/epernia/firmware_v3/tree/master" target="_blank">esta guía</a> para más detalles). </li> <li> <b>Abrir el Proyecto:</b> Importa el proyecto en Eclipse y revisa la configuración de las librerías incluidas en el Firmware_v3. </li> <li> <b>Configurar Parámetros:</b> Verifica y, si es necesario, ajusta los parámetros de la comunicación UART y la asignación de pines en el código fuente. </li> <li> <b>Compilar:</b> Compila el firmware utilizando la herramienta de compilación de Eclipse. </li> <li> <b>Cargar el Firmware:</b> Sigue las instrucciones de <a href="https://github.com/epernia/firmware_v3/blob/master/documentation/firmware/eclipse/usage-es.md#2-compilar-proyecto-firmware_v3-en-eclipse" target="_blank">este enlace</a> para cargar el firmware en la EDU-CIAA. </li> </ol>
-<h2><b>⚠️ Notas Adicionales</b></h2> <ul> <li>La EDU-CIAA no actúa como cerebro del sistema, sino que ejecuta las instrucciones que provienen del ESP32-CAM mediante UART.</li> <li>La comunicación WIFI es responsabilidad exclusiva del ESP32-CAM.</li> <li>El firmware se desarrolló integrando todas las funciones necesarias en Firmware_v3, por lo que no se emplearon librerías para WIFI ni freeRTOS en esta parte.</li> <li>Si surgen dudas o se requieren ajustes, revisa la documentación interna y los ejemplos provistos en el entorno de desarrollo.</li> </ul>
-<h2><b>📚 Recursos y Referencias</b></h2> <ul> <li><a href="https://github.com/epernia/firmware_v3/blob/master/documentation/firmware/eclipse/usage-es.md" target="_blank">Guía para Eclipse EDU-CIAA</a></li> <li><a href="https://github.com/epernia/firmware_v3/blob/master/documentation/firmware/eclipse/usage-es.md#2-compilar-proyecto-firmware_v3-en-eclipse" target="_blank">Instrucciones para Compilación y Carga del Firmware</a></li> </ul>
-<p>Este README se enfoca exclusivamente en el firmware de la EDU-CIAA. Para información general del proyecto MAW (hardware, software de control para PC, etc.), consulta el README principal del repositorio.</p> 
+<h1>MAW EDU-CIAA — Firmware y Configuración</h1>
+
+<h2>Descripción</h2>
+<p>Este subdirectorio contiene el código fuente y las instrucciones para programar la placa <strong>EDU-CIAA-NXP</strong>, encargada de la gestión de motores, sensores y lógica embebida del robot MAW.</p>
+<blockquote>El firmware está basado en la biblioteca sAPI v3 y organización modular descrita en el informe final. :contentReference[oaicite:1]{index=1}</blockquote>
+
+<details>
+  <summary>📝 Módulos Principales</summary>
+  <ul>
+    <li><code>motorShield2.c/h</code>: Control de drivers L293D y expansión 74HC595</li>
+    <li><code>comandos.c/h</code>: Interpretación y envío de comandos</li>
+    <li><code>arm.c/h</code>: Lógica de movimiento del brazo (servos)</li>
+    <li><code>sapi.c</code>: Adaptación de funciones del firmware sAPI v3</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🚀 Funcionalidad Clave</summary>
+  <ul>
+    <li>Control de velocidad y dirección de los motores DC</li>
+    <li>Lectura de sensores de nivel de batería y disparo de alerta</li>
+    <li>Gestión de interrupciones para botones de emergencia</li>
+    <li>Comunicación UART/TCP con ESP32-CAM para sinergia de tareas</li>
+  </ul>
+</details>
+
+<h2>📚 Tabla de Contenidos</h2>
+<ol>
+  <li><a href="#prerequisitos">Prerequisitos</a></li>
+  <li><a href="#instalacion-ide">Instalación IDE (CIAA Launcher)</a></li>
+  <li><a href="#compilacion-y-flasheo">Compilación y Flasheo</a></li>
+  <li><a href="#uso">Uso y Verificación</a></li>
+  <li><a href="#estructura-de-archivos">Estructura de Archivos</a></li>
+</ol>
+<hr>
+
+<h2 id="prerequisitos">🛠️ Prerequisitos</h2>
+<ul>
+  <li>Placa <strong>EDU-CIAA-NXP</strong></li>
+  <li><strong>CIAA Launcher</strong> instalado (Eclipse + toolchain ARM)</li>
+  <li>Firmware sAPI v3 (incluido en <code>lib_sapi/</code>)</li>
+  <li>Cables USB y drivers de la EDU-CIAA</li>
+</ul>
+<hr>
+
+<h2 id="instalacion-ide">⚙️ Instalación IDE (CIAA Launcher)</h2>
+<ol>
+  <li>Descarga e instala CIAA Launcher desde el sitio oficial de la UNLP.</li>
+  <li>Abre <code>firmware_ciaa/MAW_EDU_CIAA.workspace</code> en Eclipse.</li>
+  <li>Importa el proyecto C desde el directorio <code>firmware_ciaa/</code>.</li>
+  <li>Verifica que las rutas a <code>lib_sapi/</code> estén configuradas en las propiedades del proyecto.</li>
+</ol>
+<hr>
+
+<h2 id="compilacion-y-flasheo">💾 Compilación y Flasheo</h2>
+<ol>
+  <li>Selecciona la configuración <strong>Debug</strong> o <strong>Release</strong>.</li>
+  <li>Haz clic en <em>Build Project</em> para compilar el firmware.</li>
+  <li>Conecta la placa EDU-CIAA al PC vía USB.</li>
+  <li>Presiona el botón <em>Debug</em> o <em>Run</em> para flashear el firmware.</li>
+  <li>Verifica que el LED frontal parpadee indicando arranque exitoso.</li>
+</ol>
+<hr>
+
+<h2 id="uso">📈 Uso y Verificación</h2>
+<ol>
+  <li>Montar la EDU-CIAA en el shield del chasis.</li>
+  <li>Conectar drivers de motores y sensores según diagrama en <code>pcb_design/</code>.</li>
+  <li>Conectar la fuente de alimentación (5 V para lógica, 12 V para motores).</li>
+  <li>Observa mensajes de inicio en la consola serial (115200 bps).</li>
+  <li>Envía comandos de prueba desde el CLI o vía terminal UART.</li>
+</ol>
+<hr>
+
+<h2 id="estructura-de-archivos">📂 Estructura de Archivos</h2>
+<pre><code>EDU-CIAA/
+├── lib_sapi/               # Biblioteca sAPI v3
+├── MAW_EDU_CIAA.workspace  # Workspace de Eclipse
+├── src/                    # Código fuente C
+│   ├── motorShield2.c
+│   ├── comandos.c
+│   └── arm.c
+├── include/                # Headers personalizados
+│   ├── motorShield2.h
+│   ├── comandos.h
+│   └── arm.h
+└── debug/                  # Binaries compilados
+</code></pre>
+
+
+<h2 id="licencia">📄 Licencia</h2>
+<p>Este subdirectorio forma parte del proyecto MAW, licenciado bajo MIT. Consulta el archivo raíz <code>LICENSE</code> para más detalles.</p>
