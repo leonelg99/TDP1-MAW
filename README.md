@@ -34,15 +34,15 @@
       <li>Arduino + FreeRTOS (ESP32)</li>
       <li>Python 3 (Tkinter, Pygame, Pillow)</li>
       <li>Proteus (diseño de PCB)</li>
-    </ul>rmware(ESP32-CAM)</li>
-    <ul>
-      <li>Arduino: libreria e IDE para programar el ESP32-CAM</li>
-      <li>FreeRTOS: para la gestión de tareas en tiempo real</li>
     </ul>
-    <li>EDU-CIAA</li>
+    <li>Hardmware(ESP32-CAM)</li>
     <ul>
-      <li>C: como lenguaje de programacion</li>
-      <li>Firmware v3: libreria oficial para la programacion de la EDU-CIAA.</li>
+      <li>ESP32-CAM con cámara OV2640</li>
+      <li>EDU-CIAA-NXP (ARM Cortex-M4)</li>
+      <li>Shield L293D + 74HC595</li>
+      <li>4 Motores DC, servomotores opcionales</li>
+      <li>Step-down LM2596</li>
+      <li>Chasis 3D (PLA)</li>
     </ul>
   </ol>
 </details>
