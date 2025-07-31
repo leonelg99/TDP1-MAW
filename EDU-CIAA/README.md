@@ -2,7 +2,7 @@
 
 <h2>Descripción</h2>
 <p>Este subdirectorio contiene el código fuente y las instrucciones para programar la placa <strong>EDU-CIAA-NXP</strong>, encargada de la gestión de motores, sensores y lógica embebida del robot MAW.</p>
-<blockquote>El firmware está basado en la biblioteca sAPI v3 y organización modular descrita en el informe final. :contentReference[oaicite:1]{index=1}</blockquote>
+<blockquote>El firmware está basado en la biblioteca sAPI v3 y organización modular descrita en el informe final. </blockquote>
 
 <details>
   <summary>📝 Módulos Principales</summary>
