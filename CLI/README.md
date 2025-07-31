@@ -41,7 +41,7 @@
 
 ---
 
-## 🛠️ Prerequisitos {#prerequisitos}
+## 🛠️ Prerequisitos
 
 * **Python 3.8 o superior**
 * **Joystick USB** compatible
@@ -54,7 +54,7 @@
 
 ---
 
-## ⚙️ Instalación {#instalaci%C3%B3n}
+## ⚙️ Instalación
 
 1. Navega al directorio del CLI:
 
@@ -69,7 +69,7 @@
 
 ---
 
-## 🚀 Ejecución {#ejecuci%C3%B3n}
+## 🚀 Ejecución
 
 1. Conecta el joystick a la PC.
 2. Asegúrate de estar en la red Wi-Fi generada por el ESP32-CAM.
@@ -98,17 +98,6 @@ control_pc/
 ├── video.py       # Streaming de video con receiveImage()
 └── utils.py       # add_message(), update_camera(), formato de mensajes
 ```
-
----
-
-## 🤝 Contribuciones {#contribuciones}
-
-1. Haz un *fork* del repositorio.
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit.
-4. Envía un *Pull Request* describiendo los cambios.
-
----
 
 ## 📄 Licencia {#licencia}
 
