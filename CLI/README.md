@@ -11,7 +11,7 @@
 
 * Interfaz gráfica con `Tkinter` para video y consola de mensajes
 * Lectura de joystick mediante `pygame`
-* Arquitectura de 4 *threads* para concurrencia: GUI, joystick, conexión, video fileciteturn1file4
+* Arquitectura de 4 *threads* para concurrencia: GUI, joystick, conexión, y video
 
 </details>
 
@@ -38,7 +38,7 @@
 
 ---
 
-## 🛠️ Prerequisitos
+## 🛠️ Prerequisitos (#prerequisitos)
 
 * **Python 3.8 o superior**
 * **Joystick USB** compatible
