@@ -17,7 +17,6 @@
   <li><a href="#tecnologías-utilizadas">Tecnologías Utilizadas</a></li>
   <li><a href="#requisitos-previos">Requisitos Previos</a></li>
   <li><a href="#guía-de-instalación">Guía de Instalación</a></li>
-  <li><a href="#estructura-del-repositorio">Estructura del Repositorio</a></li>
   <li><a href="#guía-de-uso">Guía de Uso</a></li>
   <li><a href="#cómo-contribuir">Cómo Contribuir</a></li>
   <li><a href="#licencia">Licencia</a></li>
@@ -118,7 +117,7 @@ python3 CLI/main.py
 
 
 
-<h1 id="authors">✒️ Autores</h1>
+<h1 id="autores">✒️ Autores</h1>
 
 | Autor                     | GitHub                                                                                                           |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------- |
