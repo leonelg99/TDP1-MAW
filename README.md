@@ -22,6 +22,7 @@
   <li><a href="#cómo-contribuir">Cómo Contribuir</a></li>
   <li><a href="#licencia">Licencia</a></li>
 </ol>
+<hr>
 <!-- Descripción del proyecto -->
 
 <h2 id="resumen-del-proyecto">Resumen del Proyecto</h2>
