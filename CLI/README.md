@@ -38,7 +38,7 @@
 
 ---
 
-## 🛠️ ##Prerequisitos
+🛠️ ##Prerequisitos
 
 * **Python 3.8 o superior**
 * **Joystick USB** compatible
