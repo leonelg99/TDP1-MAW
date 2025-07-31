@@ -28,14 +28,13 @@
 <details> 
   <summary><i>:satellite: Tecnologías utilizadas</i></summary>
   <ol> 
-    <li>Cliente (CLI)</li>
-    <ul> 
-      <li>Python</li>
-      <li>Tkinter: libreria para la implementacion de la interfaz grafica</li>
-      <li>PIL: para el procesamiento y manejo de imagenes</li>
-      <li>Threading: para la ejecucion de tareas concurrentes</li>
-    </ul> 
-    <li>Firmware(ESP32-CAM)</li>
+    <li>Software:</li>
+    <ul>
+      <li>C (sAPI para EDU-CIAA)</li>
+      <li>Arduino + FreeRTOS (ESP32)</li>
+      <li>Python 3 (Tkinter, Pygame, Pillow)</li>
+      <li>Proteus (diseño de PCB)</li>
+    </ul>rmware(ESP32-CAM)</li>
     <ul>
       <li>Arduino: libreria e IDE para programar el ESP32-CAM</li>
       <li>FreeRTOS: para la gestión de tareas en tiempo real</li>
