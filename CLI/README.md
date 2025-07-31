@@ -1,7 +1,5 @@
 # MAW CLI — Cliente de Control (Python)
 
-![MAW CLI Logo](../docs/maw_cli.png)
-
 ## Descripción
 
 **MAW CLI** es la interfaz de usuario desarrollada en Python para controlar el robot MAW desde una PC. Permite enviar comandos de movimiento, encender/apagar luces y visualizar el video en tiempo real procedente del módulo ESP32-CAM.
