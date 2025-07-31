@@ -2,7 +2,6 @@
 
 <h1>MAW - Mobile Arm WiFi</h1>
 <p><strong>Sistema Robótico Móvil con Control Remoto y Transmisión de Video</strong></p>
-<hr>
 
 <!-- Logo -->
 <div align="center">
