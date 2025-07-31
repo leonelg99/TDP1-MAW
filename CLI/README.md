@@ -10,10 +10,7 @@
 <summary>📝 Características Principales</summary>
 
 * Interfaz gráfica con `Tkinter` para video y consola de mensajes
-* Lectura de joystick mediante `pygame` (funciones `joystickInit()` y `joystickRead()`)
-* Transmisión de video en ventana Python vía función `receiveImage()`
-* Envío y recepción de comandos con formato `dest:cmd:val1:val2` (librería `connection`)
-* Registro de mensajes y estilos con `add_message()` y `update_camera()`
+* Lectura de joystick mediante `pygame`
 * Arquitectura de 4 *threads* para concurrencia: GUI, joystick, conexión, video fileciteturn1file4
 
 </details>
