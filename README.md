@@ -40,7 +40,7 @@
   <li>Código embebido con FreeRTOS y sAPI</li>
 </ul>
 
-<h2 id="tecnologías-utilizadas">Tecnologías Utilizadas</h2>
+<h2 id="tecnologías-utilizadas"><i>🛰️ Tecnologías Utilizadas</i></h2>
 <p><strong>Hardware:</strong></p>
 <ul>
   <li>ESP32-CAM con cámara OV2640</li>
