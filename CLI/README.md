@@ -31,8 +31,6 @@
   <li><a href="#instalacion">Instalación</a></li>
   <li><a href="#ejecucion">Ejecución</a></li>
   <li><a href="#estructura-de-archivos">Estructura de Archivos</a></li>
-  <li><a href="#contribuciones">Contribuciones</a></li>
-  <li><a href="#licencia">Licencia</a></li>
 </ol>
 <hr>
 
@@ -53,7 +51,7 @@
 <ol>
   <li>Navega al directorio del CLI:</li>
 </ol>
-<pre><code>cd control_pc
+<pre><code>cd CLI
 </code></pre>
 <ol start="2">
   <li>Instala dependencias si es necesario:</li>
@@ -82,7 +80,7 @@
 <hr>
 
 <h2 id="estructura-de-archivos">📂 Estructura de Archivos</h2>
-<pre><code>control_pc/
+<pre><code>CLI/
 ├── main.py        # Punto de entrada de la aplicación
 ├── connection.py  # Envío y recepción de mensajes TCP
 ├── joystick.py    # Inicialización y lectura de joystick
@@ -91,15 +89,3 @@
 └── utils.py       # add_message(), update_camera(), formato de mensajes
 </code></pre>
 <hr>
-
-<h2 id="contribuciones">🤝 Contribuciones</h2>
-<ol>
-  <li>Haz un <em>fork</em> del repositorio.</li>
-  <li>Crea una nueva rama (<code>git checkout -b feature/nueva-funcionalidad</code>).</li>
-  <li>Realiza tus cambios y haz commit.</li>
-  <li>Envía un <em>Pull Request</em> describiendo los cambios.</li>
-</ol>
-<hr>
-
-<h2 id="licencia">📄 Licencia</h2>
-<p>Este subdirectorio forma parte del proyecto MAW, licenciado bajo MIT. Consulta el archivo raíz <code>LICENSE</code> para más detalles.</p>
