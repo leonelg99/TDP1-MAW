@@ -63,25 +63,14 @@
 </details>
 
 <!-- Prerequisitos SOFTWARE -->
-<h1 id="prerequisites">🛠️ Prerequisitos</h1>
-<details>
-  <summary>Prerequisitos</summary>
-  <p>El proyecto requiere la instalación de los siguientes componentes de software:</p>
-  <ul>
-    <li>
-      <b>Visual Studio Code:</b> Editor de código necesario para el desarrollo del Cliente.
-    </li>
-    <li>
-      <b>Arduino IDE:</b> Ide para la programacion ESP32.
-    </li>
-    <li>
-      <b>Python:</b> Lenguaje para desarrollar el CLI.
-    </li>
-    <li>
-      <b>IDE EDU-CIAA:</b> Version de Eclipse con todas las herramientas necesarias para programar y testear la EDU-CIAA.
-    </li>
-  </ul>
-</details>
+<h1 id="requisitos-previos">🛠️ Requisitos Previos</h1>
+<ul>
+  <li>Python 3.8+</li>
+  <li>Arduino IDE + soporte ESP32</li>
+  <li>CIAA Launcher y Firmware_v3</li>
+  <li>Paquetes Python: <code>tkinter</code>, <code>pygame</code>, <code>pillow</code></li>
+  <li>Red Wi-Fi o punto de acceso ESP32</li>
+</ul>
 
 ---
 
