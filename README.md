@@ -84,7 +84,7 @@ cd TDP1-MAW
 
 <h3>3. Programar el ESP32-CAM</h3>
 <ul>
-  <li>Abrir <code>ESP32</code> en Arduino IDE</li>
+  <li>Abrir <code>ESP32/</code> en Arduino IDE</li>
   <li>Seleccionar "AI Thinker ESP32-CAM"</li>
   <li>Subir el sketch</li>
 </ul>
