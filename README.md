@@ -40,27 +40,23 @@
   <li>Código embebido con FreeRTOS y sAPI</li>
 </ul>
 
-<details> 
-  <summary><i>:satellite: Tecnologías utilizadas</i></summary>
-  <ol> 
-    <li>Software:</li>
-    <ul>
-      <li>C (sAPI para EDU-CIAA)</li>
-      <li>Arduino + FreeRTOS (ESP32)</li>
-      <li>Python 3 (Tkinter, Pygame, Pillow)</li>
-      <li>Proteus (diseño de PCB)</li>
-    </ul>
-    <li>Hardmware(ESP32-CAM)</li>
-    <ul>
-      <li>ESP32-CAM con cámara OV2640</li>
-      <li>EDU-CIAA-NXP (ARM Cortex-M4)</li>
-      <li>Shield L293D + 74HC595</li>
-      <li>4 Motores DC, servomotores opcionales</li>
-      <li>Step-down LM2596</li>
-      <li>Chasis 3D (PLA)</li>
-    </ul>
-  </ol>
-</details>
+<h2 id="tecnologías-utilizadas">Tecnologías Utilizadas</h2>
+<p><strong>Hardware:</strong></p>
+<ul>
+  <li>ESP32-CAM con cámara OV2640</li>
+  <li>EDU-CIAA-NXP (ARM Cortex-M4)</li>
+  <li>Shield L293D + 74HC595</li>
+  <li>4 Motores DC, servomotores opcionales</li>
+  <li>Step-down LM2596</li>
+  <li>Chasis 3D (PLA)</li>
+</ul>
+<p><strong>Software:</strong></p>
+<ul>
+  <li>C (sAPI para EDU-CIAA)</li>
+  <li>Arduino + FreeRTOS (ESP32)</li>
+  <li>Python 3 (Tkinter, Pygame, Pillow)</li>
+  <li>Proteus (diseño de PCB)</li>
+</ul>
 
 <!-- Prerequisitos SOFTWARE -->
 <h1 id="requisitos-previos">🛠️ Requisitos Previos</h1>
