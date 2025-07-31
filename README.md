@@ -31,7 +31,7 @@
 <blockquote>Nota: Las consideraciones específicas para el Cliente, ESP32 y EDU-CIAA se encuentran en sus respectivos README dentro de cada subdirectorio.</blockquote>
 
 
-<h2 id="características-principales"><i>:memo: Características del proyecto</i</h2>
+<h2 id="características-principales"><i>:memo: Características del proyecto</i></h2>
 <ul>
   <li>Control remoto por joystick (movimiento, luces, cámara)</li>
   <li>Transmisión de video SVGA (800x600)</li>
