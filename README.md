@@ -114,7 +114,7 @@ python3 CLI/main.py
   <li>Visualizar video y logs en la interfaz</li>
 </ol>
 
-
+---
 
 <h1 id="autores">✒️ Autores</h1>
 
