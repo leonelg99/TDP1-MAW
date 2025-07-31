@@ -7,6 +7,19 @@
   <img src="https://github.com/leonelg99/TDP1-MAW/blob/main/docs/maw.jpg" width="35%">
 </div>
 
+<h2>Tabla de Contenidos</h2>
+<ol>
+  <li><a href="#resumen-del-proyecto">Resumen del Proyecto</a></li>
+  <li><a href="#autores">Autores</a></li>
+  <li><a href="#características-principales">Características Principales</a></li>
+  <li><a href="#tecnologías-utilizadas">Tecnologías Utilizadas</a></li>
+  <li><a href="#requisitos-previos">Requisitos Previos</a></li>
+  <li><a href="#guía-de-instalación">Guía de Instalación</a></li>
+  <li><a href="#estructura-del-repositorio">Estructura del Repositorio</a></li>
+  <li><a href="#guía-de-uso">Guía de Uso</a></li>
+  <li><a href="#cómo-contribuir">Cómo Contribuir</a></li>
+  <li><a href="#licencia">Licencia</a></li>
+</ol>
 <!-- Descripción del proyecto -->
 
 <h2 id="resumen-del-proyecto">Resumen del Proyecto</h2>
@@ -15,15 +28,14 @@
 <blockquote>Nota: Las consideraciones específicas para el Cliente, ESP32 y EDU-CIAA se encuentran en sus respectivos README dentro de cada subdirectorio.</blockquote>
 
 
-<details>
-  <summary><i>:memo: Características del proyecto</i></summary>
-  <ol>
+<h2 id="características-principales"><i>:memo: Características del proyecto</i</h2>
+<ul>
   <li>Control remoto por joystick (movimiento, luces, cámara)</li>
   <li>Transmisión de video SVGA (800x600)</li>
+  <li>Lectura de nivel de batería con alertas</li>
   <li>Diseño modular (ESP32-CAM / EDU-CIAA / App PC)</li>
   <li>Código embebido con FreeRTOS y sAPI</li>
-  </ol>
-</details>
+</ul>
 
 <details> 
   <summary><i>:satellite: Tecnologías utilizadas</i></summary>
@@ -44,21 +56,6 @@
       <li>Step-down LM2596</li>
       <li>Chasis 3D (PLA)</li>
     </ul>
-  </ol>
-</details>
-
-<!-- Tabla de contenidos -->
-<h1 id="table-of-contents">:book: Tabla de contenidos</h1>
-<details open="open">
-  <summary>Tabla de contenidos</summary>
-  <ol>
-    <li><a href="#prerequisites">➤ Prerequisitos</a></li>
-    <li><a href="#installation-esp32">➤ Instalación y Configuración del ESP32</a></li>
-    <li><a href="#installation-edu-ciaa">➤ Instalacion y Configuracion del IDE, herramiente y Firmware para la EDU-CIAA</a></li>
-    <li><a href="#installation-cli">➤ Instalacion y Ejecucion del Cliente</a></li>
-    <li><a href="#execution-steps">➤ Pasos para la Ejecución del Proyecto</a></li>
-    <li><a href="#authors">➤ Autores</a></li>
-    <li><a href="#coordinador">➤ Coordinador</a></li>
   </ol>
 </details>
 
