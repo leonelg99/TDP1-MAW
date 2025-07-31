@@ -18,7 +18,6 @@
   <li><a href="#requisitos-previos">Requisitos Previos</a></li>
   <li><a href="#guía-de-instalación">Guía de Instalación</a></li>
   <li><a href="#guía-de-uso">Guía de Uso</a></li>
-  <li><a href="#cómo-contribuir">Cómo Contribuir</a></li>
   <li><a href="#licencia">Licencia</a></li>
 </ol>
 <hr>
@@ -132,7 +131,7 @@ python3 CLI/main.py
 <p>Profesores a cargo de la cátedra “Taller de Proyecto 1” de la Facultad de Ingeniería de la Universidad Nacional de La Plata.</p>
 
 <!-- Licencia -->
-<h1 id="license">📄 Licencia</h1>
+<h1 id="licencia">📄 Licencia</h1>
 <details>
   <summary>Licencia</summary>
   <p>Este proyecto está bajo la Licencia <b>GPL-3.0 license</b>.</p>
