@@ -69,25 +69,42 @@
   <li>Arduino IDE + soporte ESP32</li>
   <li>CIAA Launcher y Firmware_v3</li>
   <li>Paquetes Python: <code>tkinter</code>, <code>pygame</code>, <code>pillow</code></li>
-  <li>Red Wi-Fi o punto de acceso ESP32</li>
 </ul>
 
 ---
 
 <!-- Prerequisitos ESP32 -->
-<h1 id="installation-esp32">🛠️ Instalación y Configuración del ESP32</h1>
-<details>
-  <summary>Instalación y Configuración del ESP32</summary>
-  <ol>
-    <li>Abre <b>Visual Studio Code</b> y navega a la carpeta del proyecto: <code>2024-A2-LIDAR-VL53L0X</code>.</li>
-    <li>Posiciónate en la carpeta <code>Microcontroller</code> (donde se encuentra el código en C).</li>
-    <li>Conecta el ESP32 a un puerto USB de la computadora.</li>
-    <li>Abrir <b>platformion.ini</b> y modificar <b>upload_port</b> con el numero de puerto al que se conecto el ESP32.</li>
-    <li>Desde el menú inferior de <b>PlatformIO</b>, presiona el botón de subida de programa para compilar y cargar el firmware al ESP32.</li>
-    <li>O en la consola, ejecutar <b>pio run -t upload<b></li>
-  </ol>
-  <p>Tras estos pasos, el ESP32 estará configurado y listo para ejecutar las instrucciones del proyecto.</p>
-</details>
+<h2 id="guía-de-instalación">🛠️ Guía de Instalación</h2>
+<h3>1. Clonar el Repositorio</h3>
+<pre><code>git clone https://github.com/leonelg99/TDP1-MAW.git
+cd TDP1-MAW
+</code></pre>
+
+<h3>2. Programar la EDU-CIAA</h3>
+<ul>
+  <li>Abrir <code>firmware_ciaa/</code> con CIAA Launcher</li>
+  <li>Compilar y grabar en la placa</li>
+</ul>
+
+<h3>3. Programar el ESP32-CAM</h3>
+<ul>
+  <li>Abrir <code>firmware_esp32/</code> en Arduino IDE</li>
+  <li>Seleccionar "AI Thinker ESP32-CAM"</li>
+  <li>Subir el sketch</li>
+</ul>
+
+<h3>4. Aplicación de Control (PC)</h3>
+<pre><code>pip install tkinter pygame pillow
+python3 control_pc/main.py
+</code></pre>
+<p>Conectar el joystick antes de ejecutar.</p>
+
+<h3>5. Montaje</h3>
+<ul>
+  <li>Ensamblar robot con partes impresas en 3D</li>
+  <li>Verificar cableado, fuente y placas</li>
+</ul>
+
 
 
 <h1 id="authors">✒️ Autores</h1>
