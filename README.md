@@ -124,11 +124,12 @@ python3 CLI/main.py
 | **Octavio Perez Balcedo** | [![Repo](https://badgen.net/badge/icon/OctavioPB1?icon=github&label)](https://github.com/OctavioPB1)       |
 | **Ossola Florencia**      | [![Repo](https://badgen.net/badge/icon/florencia-ossola?icon=github&label)](https://github.com/florencia-ossola) |
 
----
 
 <h1 id="coordinador">📌 Coordinador</h1>
 
 <p>Profesores a cargo de la cátedra “Taller de Proyecto 1” de la Facultad de Ingeniería de la Universidad Nacional de La Plata.</p>
+
+---
 
 <!-- Licencia -->
 <h1 id="licencia">📄 Licencia</h1>
