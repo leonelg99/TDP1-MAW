@@ -18,18 +18,10 @@
 <details>
   <summary><i>:memo: Características del proyecto</i></summary>
   <ol>
-    <li><b>Transmision de Video<b></li>
-    <p>Se puede decir que es la base del proyecto. Se realiza mediante el ESP32-CAM (version del ESP32 con una camara integrada) el cual establece un transmision de video mediante HTTP, la cual es captada por el CLI. De esta manera se puede controlar el vehiculo a distancia.</p>
-    <li>Modulo de Baterias</li>
-    <p>El vehiculo cuanta con una serie de baterias para alimentar todos los componenetes, incluyendo una bateria dedicada a los motores, y otra a la logica.</p>
-    <li>Access Point</li>
-    <p>El ESP32-CAM actúa como punto de acceso (AP) para la conexión. De este modo la pc donde se ejectute el cliente (CLI) debe conectarse al la red del ESP32.</p>
-    <li>Desarrollo Modular</li>
-    <p>El programa está diseñado de manera modular, con componentes separados por funcionalidad, facilitando el mantenimiento y la extensión del proyecto.</p>
-    <li>Replicabilidad</li>
-    <p>El proyecto está documentado lo suficiente como para permitir replicar el control de un robot similar utilizando el hardware indicado.</p>
-    <li>Extensibilidad</li>
-    <p>Es posible ampliar el sistema para añadir mejoras de rendimiento o nuevas funcionalidades.</p>
+  <li>Control remoto por joystick (movimiento, luces, cámara)</li>
+  <li>Transmisión de video SVGA (800x600)</li>
+  <li>Diseño modular (ESP32-CAM / EDU-CIAA / App PC)</li>
+  <li>Código embebido con FreeRTOS y sAPI</li>
   </ol>
 </details>
 
