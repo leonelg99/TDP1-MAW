@@ -82,20 +82,20 @@ cd TDP1-MAW
 
 <h3>2. Programar la EDU-CIAA</h3>
 <ul>
-  <li>Abrir <code>firmware_ciaa/</code> con CIAA Launcher</li>
+  <li>Abrir <code>EDU-CIAA/</code> con CIAA Launcher</li>
   <li>Compilar y grabar en la placa</li>
 </ul>
 
 <h3>3. Programar el ESP32-CAM</h3>
 <ul>
-  <li>Abrir <code>firmware_esp32/</code> en Arduino IDE</li>
+  <li>Abrir <code>ESP32</code> en Arduino IDE</li>
   <li>Seleccionar "AI Thinker ESP32-CAM"</li>
   <li>Subir el sketch</li>
 </ul>
 
 <h3>4. Aplicación de Control (PC)</h3>
 <pre><code>pip install tkinter pygame pillow
-python3 control_pc/main.py
+python3 CLI/main.py
 </code></pre>
 <p>Conectar el joystick antes de ejecutar.</p>
 
@@ -104,6 +104,21 @@ python3 control_pc/main.py
   <li>Ensamblar robot con partes impresas en 3D</li>
   <li>Verificar cableado, fuente y placas</li>
 </ul>
+
+<h2 id="guía-de-uso">Guía de Uso</h2>
+<ol>
+  <li>Conectar joystick a la PC</li>
+  <li>Encender el robot</li>
+  <li>Conectarse al Wi-Fi del ESP32</li>
+  <li>Ejecutar <code>control_pc/main.py</code></li>
+  <li>Controlar desde joystick:
+    <ul>
+      <li>Movimiento</li>
+      <li>Luces</li>
+    </ul>
+  </li>
+  <li>Visualizar video y logs en la interfaz</li>
+</ol>
 
 
 
