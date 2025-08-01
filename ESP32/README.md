@@ -2,7 +2,7 @@
 
 <h2>Descripción</h2>
 <p>Este subdirectorio incluye el firmware y los recursos necesarios para el módulo <strong>ESP32-CAM</strong>, responsable de la conectividad Wi-Fi y la transmisión de video en el proyecto MAW.</p>
-<blockquote>El código está organizado con FreeRTOS para manejar tareas de cámara, Wi-Fi y comunicación con la EDU-CIAA. El diseño modular se detalla en el informe final. :contentReference[oaicite:1]{index=1}</blockquote>
+<blockquote>El código está organizado con FreeRTOS para manejar tareas de cámara, Wi-Fi y comunicación con la EDU-CIAA. El diseño modular se detalla en el informe final.</blockquote>
 
 <details>
   <summary>📝 Módulos Principales</summary>
