@@ -31,7 +31,6 @@
   <li><a href="#configuracion">Configuración de Variables</a></li>
   <li><a href="#compilacion-y-flasheo">Compilación y Flasheo</a></li>
   <li><a href="#uso">Uso y Pruebas</a></li>
-  <li><a href="#estructura-de-archivos">Estructura de Archivos</a></li>
 </ol>
 <hr>
 
@@ -87,16 +86,3 @@
   <li>Prueba enviar comandos desde el CLI MAW para verificar la comunicación con EDU-CIAA.</li>
 </ol>
 <hr>
-
-<h2 id="estructura-de-archivos">📂 Estructura de Archivos</h2>
-<pre><code>ESP32/
-├── camera_task.c
-├── wifi_task.c
-├── conn_task.c
-├── main.c
-├── platformio.ini  # Si usas PlatformIO
-├── ESP32_FIRMWARE.ino  # Si usas Arduino IDE
-└── README.html       # Este archivo
-</code></pre>
-<hr>
-
