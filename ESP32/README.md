@@ -59,7 +59,7 @@
 
 <h2 id="configuracion">🔧 Configuración de Variables</h2>
 <ol>
-  <li>Abre <code>firmware_esp32/firmware_esp32.ino</code> o <code>main.c</code>.</li>
+  <li>Abre <code>ESP32/ESP32_FIRMWARE.ino</code> o <code>main.c</code>.</li>
   <li>Define tu SSID y PASSWORD en las constantes:
     <pre><code>#define WIFI_SSID "Tu_SSID"
 #define WIFI_PASS "Tu_PASSWORD"
