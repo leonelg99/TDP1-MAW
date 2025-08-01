@@ -19,7 +19,7 @@
   <ul>
     <li>Captura de imágenes con sensor OV2640 y buffer DMA</li>
     <li>Servidor web para streaming MJPEG por HTTP</li>
-    <li>Reintento automático de conexión Wi-Fi y modo AP de respaldo</li>
+    <li>Modo AP</li>
     <li>Intercambio de comandos y datos con EDU-CIAA vía UART/TCP</li>
   </ul>
 </details>
