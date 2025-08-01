@@ -59,7 +59,7 @@
 
 <h2 id="configuracion">🔧 Configuración de Variables</h2>
 <ol>
-  <li>Abre <code>ESP32/ESP32_FIRMWARE.ino</code> o <code>main.c</code>.</li>
+  <li>Abre <code>ESP32/ESP32_FIRMWARE.ino</code></li>
   <li>Define tu SSID y PASSWORD en las constantes:
     <pre><code>#define WIFI_SSID "Tu_SSID"
 #define WIFI_PASS "Tu_PASSWORD"
@@ -88,13 +88,13 @@
 <hr>
 
 <h2 id="estructura-de-archivos">📂 Estructura de Archivos</h2>
-<pre><code>firmware_esp32/
+<pre><code>ESP32/
 ├── camera_task.c
 ├── wifi_task.c
 ├── conn_task.c
 ├── main.c
 ├── platformio.ini  # Si usas PlatformIO
-├── firmware_esp32.ino  # Si usas Arduino IDE
+├── ESP32_FIRMWARE.ino  # Si usas Arduino IDE
 └── README.html       # Este archivo
 </code></pre>
 <hr>
