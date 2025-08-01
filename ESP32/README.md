@@ -1,1 +1,103 @@
-<h1><b>Firmware ESP32 - MAW</b></h1> <p>El firmware del ESP32 configura el ESP32-CAM como Access Point y trabaja en conjunto con la EDU-CIAA, encargándose de la comunicación con el Cliente.</p> <p>El ESP32 gestiona la comunicación con el Cliente mediante protocolo HTTP y UART con la EDU-CIAA. Al recibir un mensaje, lo preprocesa y, dependiendo del destino, lo reenvía a la EDU-CIAA, lo descarta en caso de error o de formato inválido, o lo ejecuta directamente.</p> <p>Por otro lado, el ESP32-CAM cumple la función de transmitir video en tiempo real, permitiendo al Cliente visualizar en vivo el recorrido del vehículo.</p> <h2><b>Funcionalidades Principales</b></h2> <ul> <li><b>Configuración WIFI:</b> Establece el ESP32-CAM como Access Point (SSID y contraseña predefinidos).</li> <li><b>Comunicación HTTP y UART:</b> Permite el intercambio de mensajes con el Cliente y la EDU-CIAA, utilizando las bibliotecas oficiales del ESP32 para Arduino.</li> <li><b>Transmisión de Video:</b> Captura y envía video en tiempo real a la PC, con una resolución predefinida (SVGA) para optimizar el rendimiento.</li> <li><b>Manejo de Mensajes:</b> Preprocesa los mensajes recibidos, validándolos y determinando su destino (ejecución local o envío a la EDU-CIAA).</li> <li><b>Envio de Mensajes:</b> Recibe mensajes de la EDU-CIAA y los reenvia al cliente.</li> </ul> <h2><b>Desarrollo</b></h2> <p>El firmware fue desarrollado en el <b>Arduino IDE</b> utilizando el ESP32 Core oficial para Arduino. Se emplearon las bibliotecas oficiales para gestionar WIFI y UART, garantizando una integración robusta y fiable.</p> <p>El desarrollo se centró en la modularización del código, separando las funciones de comunicación, captura de video y procesamiento de mensajes, lo que facilitó la identificación y corrección de errores (por ejemplo, problemas de brownout y de sincronización de tareas).</p> <h2><b>Compilación y Carga</b></h2> <ul> <li><b>Instalación:</b> Descarga e instala la última versión del <a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a> y configura el ESP32 Core siguiendo las instrucciones oficiales de Espressif.</li> <li><b>Configuración:</b> Revisa y ajusta en el código los parámetros de red WIFI (SSID, contraseña) y la configuración de la cámara.</li> <li><b>Compilación:</b> Selecciona el modelo de placa adecuado (por ejemplo, ESP32-CAM) y compila el firmware.</li> <li><b>Carga:</b> Conecta el ESP32-CAM a tu PC mediante un adaptador USB-Serial, selecciona el puerto correspondiente y sube el firmware usando el Arduino IDE.</li> </ul> <h2><b>Requisitos y Dependencias</b></h2> <ul> <li>Arduino IDE</li> <li>ESP32 Core para Arduino</li> <li>Bibliotecas WIFI y UART incluidas en el ESP32 Core</li> </ul> <h2><b>Notas Adicionales</b></h2> <ul> <li>Se realizaron numerosas pruebas para optimizar la transmisión de video y la estabilidad de la comunicación.</li> <li>Es fundamental utilizar una fuente de alimentación estable, ya que el ESP32-CAM es sensible a variaciones en el voltaje.</li> <li>Para más detalles sobre la configuración y el uso de las bibliotecas, consulta la <a href="https://docs.espressif.com/projects/arduino-esp32/en/latest/" target="_blank">documentación oficial de ESP32 para Arduino</a>.</li> </ul> 
+<h1>MAW ESP32-CAM — Firmware y Configuración</h1>
+
+<h2>Descripción</h2>
+<p>Este subdirectorio incluye el firmware y los recursos necesarios para el módulo <strong>ESP32-CAM</strong>, responsable de la conectividad Wi-Fi y la transmisión de video en el proyecto MAW.</p>
+<blockquote>El código está organizado con FreeRTOS para manejar tareas de cámara, Wi-Fi y comunicación con la EDU-CIAA. El diseño modular se detalla en el informe final. :contentReference[oaicite:1]{index=1}</blockquote>
+
+<details>
+  <summary>📝 Módulos Principales</summary>
+  <ul>
+    <li><code>camera_task.c/h</code>: Captura y envío de frames</li>
+    <li><code>wifi_task.c/h</code>: Gestión de conexión Wi-Fi y servidor web</li>
+    <li><code>conn_task.c/h</code>: Comunicación UART/TCP con EDU-CIAA</li>
+    <li><code>main.c</code>: Inicialización de FreeRTOS y creación de tareas</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🚀 Funcionalidad Clave</summary>
+  <ul>
+    <li>Captura de imágenes con sensor OV2640 y buffer DMA</li>
+    <li>Servidor web para streaming MJPEG por HTTP</li>
+    <li>Reintento automático de conexión Wi-Fi y modo AP de respaldo</li>
+    <li>Intercambio de comandos y datos con EDU-CIAA vía UART/TCP</li>
+  </ul>
+</details>
+
+<h2>📚 Tabla de Contenidos</h2>
+<ol>
+  <li><a href="#prerequisitos">Prerequisitos</a></li>
+  <li><a href="#instalacion-ide">Instalación IDE (Arduino IDE)</a></li>
+  <li><a href="#configuracion">Configuración de Variables</a></li>
+  <li><a href="#compilacion-y-flasheo">Compilación y Flasheo</a></li>
+  <li><a href="#uso">Uso y Pruebas</a></li>
+  <li><a href="#estructura-de-archivos">Estructura de Archivos</a></li>
+  <li><a href="#contribuciones">Contribuciones</a></li>
+  <li><a href="#licencia">Licencia</a></li>
+</ol>
+<hr>
+
+<h2 id="prerequisitos">🛠️ Prerequisitos</h2>
+<ul>
+  <li>Arduino IDE con soporte para ESP32 (<em>Espressif</em> board manager)</li>
+  <li>Bibliotecas: <code>esp32-camera</code>, <code>WiFi</code>, <code>ESPAsyncWebServer</code></li>
+  <li>Cable USB y drivers para ESP32-CAM</li>
+</ul>
+<hr>
+
+<h2 id="instalacion-ide">⚙️ Instalación IDE (Arduino IDE)</h2>
+<ol>
+  <li>Abre Arduino IDE y añade el URL de placas ESP32 en <em>Preferences &gt; Additional Boards Manager URLs</em>.</li>
+  <li>Instala el paquete <strong>esp32 by Espressif Systems</strong> desde Boards Manager.</li>
+  <li>Asegúrate de tener las bibliotecas instaladas:
+    <ul>
+      <li><code>esp32-camera</code></li>
+      <li><code>WiFi</code></li>
+      <li><code>ESPAsyncWebServer</code></li>
+    </ul>
+  </li>
+</ol>
+<hr>
+
+<h2 id="configuracion">🔧 Configuración de Variables</h2>
+<ol>
+  <li>Abre <code>firmware_esp32/firmware_esp32.ino</code> o <code>main.c</code>.</li>
+  <li>Define tu SSID y PASSWORD en las constantes:
+    <pre><code>#define WIFI_SSID "Tu_SSID"
+#define WIFI_PASS "Tu_PASSWORD"
+</code></pre>
+  </li>
+  <li>Configura el pin de reset de la cámara si tu módulo lo requiere.</li>
+</ol>
+<hr>
+
+<h2 id="compilacion-y-flasheo">💾 Compilación y Flasheo</h2>
+<ol>
+  <li>Selecciona la placa <strong>AI Thinker ESP32-CAM</strong> en <em>Tools &gt; Board</em>.</li>
+  <li>Selecciona el puerto serial correcto.</li>
+  <li>Haz clic en <em>Upload</em> para compilar y flashear el firmware.</li>
+  <li>Abre el <em>Serial Monitor</em> a 115200 bps para ver mensajes de arranque.</li>
+</ol>
+<hr>
+
+<h2 id="uso">📈 Uso y Pruebas</h2>
+<ol>
+  <li>Tras flashear, el ESP32-CAM intentará conectarse a tu red Wi-Fi.</li>
+  <li>Si tiene éxito, mostrará la IP asignada en el Serial Monitor.</li>
+  <li>Abre un navegador y navega a <code>http://IP_ASIGNADA:8080</code> para ver el streaming.</li>
+  <li>Prueba enviar comandos desde el CLI MAW para verificar la comunicación con EDU-CIAA.</li>
+</ol>
+<hr>
+
+<h2 id="estructura-de-archivos">📂 Estructura de Archivos</h2>
+<pre><code>firmware_esp32/
+├── camera_task.c
+├── wifi_task.c
+├── conn_task.c
+├── main.c
+├── platformio.ini  # Si usas PlatformIO
+├── firmware_esp32.ino  # Si usas Arduino IDE
+└── README.html       # Este archivo
+</code></pre>
+<hr>
+
