@@ -32,8 +32,6 @@
   <li><a href="#compilacion-y-flasheo">Compilación y Flasheo</a></li>
   <li><a href="#uso">Uso y Pruebas</a></li>
   <li><a href="#estructura-de-archivos">Estructura de Archivos</a></li>
-  <li><a href="#contribuciones">Contribuciones</a></li>
-  <li><a href="#licencia">Licencia</a></li>
 </ol>
 <hr>
 
