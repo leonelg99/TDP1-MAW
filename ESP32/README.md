@@ -80,9 +80,10 @@
 
 <h2 id="uso">📈 Uso y Pruebas</h2>
 <ol>
-  <li>Tras flashear, el ESP32-CAM intentará conectarse a tu red Wi-Fi.</li>
+  <li>Tras flashear, el ESP32-CAM intentara crear una red Wi-Fi, a partir de la SSID dada.</li>
   <li>Si tiene éxito, mostrará la IP asignada en el Serial Monitor.</li>
-  <li>Abre un navegador y navega a <code>http://IP_ASIGNADA:8080</code> para ver el streaming.</li>
+  <li>Conecta un PC a la red </li>
+  <li>Ejecuta el Cliente</li>
   <li>Prueba enviar comandos desde el CLI MAW para verificar la comunicación con EDU-CIAA.</li>
 </ol>
 <hr>
